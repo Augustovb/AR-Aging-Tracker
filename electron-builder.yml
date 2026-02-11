@@ -1,0 +1,33 @@
+appId: com.ar-aging-tracker.app
+productName: AR Aging Tracker
+copyright: Copyright © 2024
+
+directories:
+  output: release
+  buildResources: assets
+
+files:
+  - dist/**/*
+  - node_modules/**/*
+  - package.json
+
+mac:
+  category: public.app-category.finance
+  target:
+    - dmg
+    - zip
+
+win:
+  target:
+    - nsis
+    - portable
+
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Finance
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
