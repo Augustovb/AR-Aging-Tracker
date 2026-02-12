@@ -1,9 +1,16 @@
 import { ipcMain } from 'electron';
+import path from 'path';
 import { IPC_CHANNELS } from './types/ipc';
 import SettingsStorage from './services/storage/SettingsStorage';
+import { SyncEngine } from './services/sync/SyncEngine';
+import { InvoiceRepository } from './services/database/repositories/InvoiceRepository';
+import { CustomerRepository } from './services/database/repositories/CustomerRepository';
 import logger from './utils/logger';
 
 export function registerIPCHandlers(): void {
+  const invoiceRepo = new InvoiceRepository();
+  const customerRepo = new CustomerRepository();
+
   // Settings handlers
   ipcMain.handle(IPC_CHANNELS.SETTINGS_GET, async (_, key: string) => {
     try {
@@ -33,48 +40,97 @@ export function registerIPCHandlers(): void {
     }
   });
 
-  // Invoices handlers (placeholders for now)
-  ipcMain.handle(IPC_CHANNELS.INVOICES_GET_ALL, async (_event, _filters?: any) => {
+  // Sync handlers
+  ipcMain.handle(IPC_CHANNELS.SYNC_START, async () => {
     try {
-      // TODO: Implement invoice fetching
-      return [];
+      logger.info('Sync started');
+
+      // Use the Excel file in the project root
+      const excelPath = path.join(__dirname, '../../..', 'Billing _ AR Aging.xlsx');
+      const syncEngine = new SyncEngine(excelPath);
+      const result = await syncEngine.sync();
+
+      return result;
+    } catch (error: any) {
+      logger.error('Sync failed:', error);
+      return {
+        success: false,
+        message: 'Sync failed',
+        error: error.message,
+      };
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.SYNC_HISTORY, async () => {
+    try {
+      return SyncEngine.getSyncHistory();
+    } catch (error) {
+      logger.error('Failed to get sync history:', error);
+      throw error;
+    }
+  });
+
+  // Invoices handlers
+  ipcMain.handle(IPC_CHANNELS.INVOICES_GET_ALL, async (_event, filters?: any) => {
+    try {
+      return invoiceRepo.getAll(filters);
     } catch (error) {
       logger.error('Failed to get invoices:', error);
       throw error;
     }
   });
 
+  ipcMain.handle(IPC_CHANNELS.INVOICES_GET_BY_ID, async (_event, id: string) => {
+    try {
+      return invoiceRepo.getById(id);
+    } catch (error) {
+      logger.error('Failed to get invoice:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.INVOICES_GET_BY_CUSTOMER, async (_event, customerId: string) => {
+    try {
+      return invoiceRepo.getByCustomer(customerId);
+    } catch (error) {
+      logger.error('Failed to get invoices by customer:', error);
+      throw error;
+    }
+  });
+
   ipcMain.handle(IPC_CHANNELS.INVOICES_GET_SUMMARY, async () => {
     try {
-      // TODO: Implement summary calculation
-      return {
-        critical: { total: 0, count: 0, customer_count: 0 },
-        relevant: { total: 0, count: 0, customer_count: 0 },
-        all90: { total: 0, count: 0, customer_count: 0 },
-        by_bucket: {
-          current: { total: 0, count: 0 },
-          '1-30': { total: 0, count: 0 },
-          '31-60': { total: 0, count: 0 },
-          '61-90': { total: 0, count: 0 },
-          '90+': { total: 0, count: 0 },
-        },
-        total_overdue: 0,
-        total_invoices: 0,
-      };
+      return invoiceRepo.getSummary();
     } catch (error) {
       logger.error('Failed to get invoice summary:', error);
       throw error;
     }
   });
 
-  // Sync handlers (placeholders)
-  ipcMain.handle(IPC_CHANNELS.SYNC_START, async () => {
+  // Customers handlers
+  ipcMain.handle(IPC_CHANNELS.CUSTOMERS_GET_ALL, async () => {
     try {
-      logger.info('Sync started');
-      // TODO: Implement sync logic
-      return { success: true, message: 'Sync not implemented yet' };
+      return customerRepo.getAll();
     } catch (error) {
-      logger.error('Sync failed:', error);
+      logger.error('Failed to get customers:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.CUSTOMERS_GET_BY_ID, async (_event, id: string) => {
+    try {
+      return customerRepo.getById(id);
+    } catch (error) {
+      logger.error('Failed to get customer:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.CUSTOMERS_GET_WITH_OVERDUE, async () => {
+    try {
+      return customerRepo.getWithOverdueInvoices();
+    } catch (error) {
+      logger.error('Failed to get customers with overdue invoices:', error);
       throw error;
     }
   });
