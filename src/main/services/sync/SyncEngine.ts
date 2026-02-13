@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 import { DataTransformer } from './DataTransformer';
 import { InvoiceRepository } from '../database/repositories/InvoiceRepository';
 import { CustomerRepository } from '../database/repositories/CustomerRepository';
@@ -28,7 +28,7 @@ export class SyncEngine {
    * Execute the sync process
    */
   async sync(): Promise<SyncResult> {
-    const syncId = uuidv4();
+    const syncId = randomUUID();
     const startTime = new Date();
 
     try {

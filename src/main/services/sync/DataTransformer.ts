@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 import { ARCalculationService } from '../ar/ARCalculationService';
 import type { Invoice, Customer } from '../../types/models';
 import logger from '../../utils/logger';
@@ -21,7 +21,7 @@ export class DataTransformer {
           continue;
         }
 
-        const customerId = row.Cus_id || `cus_${uuidv4()}`;
+        const customerId = row.Cus_id || `cus_${randomUUID()}`;
         const customerName = row['Client Name'] || 'Unknown';
         const customerEmail = row.Email || null;
         const customerARR = this.parseARR(row["Customer's ARR"]);
@@ -50,7 +50,7 @@ export class DataTransformer {
         const ageBucket = ARCalculationService.assignAgeBucket(daysOverdue);
 
         const invoice: Invoice = {
-          id: `inv_${uuidv4()}`,
+          id: `inv_${randomUUID()}`,
           customer_id: customerId,
           invoice_number: row['Invoice #'],
           amount: row.Value,

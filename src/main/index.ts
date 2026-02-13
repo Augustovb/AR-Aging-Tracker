@@ -3,6 +3,7 @@ import path from 'path';
 import logger from './utils/logger';
 import DatabaseService from './services/database/DatabaseService';
 import { registerIPCHandlers } from './ipc-handlers';
+import { ApiKeyManager } from './services/security/ApiKeyManager';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -37,6 +38,9 @@ app.whenReady().then(async () => {
 
     // Initialize database
     DatabaseService.initialize();
+
+    // Initialize and encrypt API keys
+    ApiKeyManager.initialize();
 
     // Register IPC handlers
     registerIPCHandlers();

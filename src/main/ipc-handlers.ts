@@ -5,6 +5,7 @@ import SettingsStorage from './services/storage/SettingsStorage';
 import { SyncEngine } from './services/sync/SyncEngine';
 import { InvoiceRepository } from './services/database/repositories/InvoiceRepository';
 import { CustomerRepository } from './services/database/repositories/CustomerRepository';
+import { StripeService } from './services/stripe/StripeService';
 import logger from './utils/logger';
 
 export function registerIPCHandlers(): void {
@@ -131,6 +132,56 @@ export function registerIPCHandlers(): void {
       return customerRepo.getWithOverdueInvoices();
     } catch (error) {
       logger.error('Failed to get customers with overdue invoices:', error);
+      throw error;
+    }
+  });
+
+  // Stripe handlers (Real API with encrypted keys)
+  ipcMain.handle(IPC_CHANNELS.STRIPE_GET_PAYMENT_LINK, async (_event, invoiceId: string) => {
+    try {
+      const invoice = await invoiceRepo.getById(invoiceId);
+      if (!invoice) {
+        throw new Error(`Invoice not found: ${invoiceId}`);
+      }
+      const paymentLink = await StripeService.generatePaymentLink(invoice);
+      return paymentLink.url;
+    } catch (error) {
+      logger.error('Failed to get payment link:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.STRIPE_GET_CUSTOMER_STATEMENT, async (_event, customerId: string) => {
+    try {
+      const customer = await customerRepo.getById(customerId);
+      if (!customer) {
+        throw new Error(`Customer not found: ${customerId}`);
+      }
+      const openInvoices = await invoiceRepo.getByCustomer(customerId);
+      const statement = await StripeService.generateCustomerStatement(customer, openInvoices);
+      return statement;
+    } catch (error) {
+      logger.error('Failed to get customer statement:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.STRIPE_GET_OPEN_INVOICES, async (_event, customerId: string) => {
+    try {
+      const invoices = await invoiceRepo.getByCustomer(customerId);
+      const openInvoices = invoices.filter(inv => inv.status === 'open');
+      return openInvoices;
+    } catch (error) {
+      logger.error('Failed to get open invoices:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.STRIPE_TEST_CONNECTION, async () => {
+    try {
+      return await StripeService.testConnection();
+    } catch (error) {
+      logger.error('Failed to test Stripe connection:', error);
       throw error;
     }
   });

@@ -1,8 +1,8 @@
 # AR Aging Tracker - Implementation Progress
 
-## Current Status: Phase 2 Complete ✅
+## Current Status: Phase 3 In Progress ⚙️
 
-Last Updated: February 11, 2025
+Last Updated: February 12, 2025
 
 ---
 
@@ -56,20 +56,62 @@ Last Updated: February 11, 2025
 
 ---
 
+### Phase 2.5: Security & Real Stripe Integration
+**Status**: Complete
+**Date**: February 12, 2025
+
+**Security Infrastructure**:
+- ✅ **ApiKeyManager** - Secure API key management with OS-level encryption
+- ✅ **Multi-layer encryption** - Uses Electron SafeStorage (Keychain/DPAPI/libsecret)
+- ✅ **.env file** - Git-ignored, keys encrypted on first load then cleared from memory
+- ✅ **SECURITY.md** - Complete security documentation
+
+**Stripe Integration**:
+- ✅ **StripeService** - Real Stripe API integration (replaced mock)
+- ✅ **Restricted API key** - Using read-only `rk_live_...` key for safety
+- ✅ **Payment link generation** - Ready to fetch Stripe payment links
+- ✅ **Customer statements** - Can pull data from Stripe API
+- ✅ **Connection testing** - Stripe API health check endpoint
+
+**WSL/Electron Fixes**:
+- ✅ Installed missing Linux libraries (libnss3, libasound2t64, etc.)
+- ✅ Fixed uuid import issues (replaced with Node's crypto.randomUUID)
+- ✅ Rebuilt better-sqlite3 for Electron's Node version
+- ✅ Electron now launches on WSL successfully
+
+**Key Features**:
+- API keys encrypted using OS keychain before storage
+- Keys never logged or exposed in code
+- Environment variables cleared from memory after encryption
+- Read-only Stripe key limits potential security impact
+
+**Files Created**:
+- `src/main/services/security/ApiKeyManager.ts`
+- `src/main/services/stripe/StripeService.ts`
+- `SECURITY.md`
+- `.env` (git-ignored)
+
+---
+
 ## 🔄 Next Phases (To Be Implemented)
 
-### Phase 3: Mock Stripe Features
-**Priority**: Next up
-**Estimated**: 1-2 hours
+### Phase 3: Stripe Features & Customer Views
+**Priority**: In Progress
+**Status**: Backend ready, frontend views pending
 
-Tasks:
-- [ ] Mock payment link generator (returns fake URLs)
-- [ ] "Copy Payment Link" buttons work with mock data
-- [ ] Customer detail view
-- [ ] Mock customer statements
-- [ ] Mock open invoices list per customer
+**Completed**:
+- ✅ Real Stripe API backend integration (not mocked!)
+- ✅ IPC handlers for payment links and statements
+- ✅ Secure API key management
 
-*Note*: We'll use placeholder/mock data initially, connect real Stripe API in Phase 6
+**Remaining Tasks**:
+- [ ] Customer detail view page
+- [ ] "Copy Payment Link" buttons in UI
+- [ ] Customer statements view
+- [ ] Open invoices list per customer
+- [ ] Update CustomersView to show customer list
+
+*Note*: Skipped mock implementation - using real Stripe API from the start!
 
 ---
 
@@ -153,52 +195,61 @@ Tasks:
 6. ✅ Automatic categorization
 
 **What You Can Do Now**:
-- Import your AR data from the Excel file
-- View Critical AR ($1M+, >30 days)
-- View Relevant AR ($883k+, >60 days)
-- View All 90+ day invoices
-- Filter and explore invoice details
-- See which customers have overdue amounts
+- ✅ Launch Electron app on WSL
+- ✅ Import AR data from Excel file (click "Sync Data")
+- ✅ View Critical AR ($1M+, >30 days)
+- ✅ View Relevant AR ($883k+, >60 days)
+- ✅ View All 90+ day invoices
+- ✅ Filter and explore invoice details
+- ✅ Secure Stripe API integration ready
 
 **What's Next Tomorrow**:
-- Build customer detail views
-- Add mock Stripe payment links
-- Start email suggestion engine
+- Build customer detail view page
+- Add "Copy Payment Link" buttons with real Stripe URLs
+- Implement customer statements UI
+- Populate CustomersView with customer list
 
 ---
 
 ## 📊 Technical Stack
 
-- **Desktop**: Electron (not running yet due to WSL dependency)
+- **Desktop**: Electron ✅ (now working on WSL!)
 - **Frontend**: React 18 + TypeScript + TailwindCSS
 - **Database**: SQLite3 (better-sqlite3)
 - **Build**: Vite
 - **Date Handling**: date-fns
 - **Styling**: TailwindCSS + Lucide icons
+- **Payments**: Stripe API (read-only restricted key)
+- **Security**: Electron SafeStorage + OS-level encryption
 
 ---
 
 ## 🚀 Running the App
 
 ```bash
-# Start development server
+# Start development server (Vite + Electron)
 npm run dev
 
-# Access in browser (Electron not working on WSL yet)
-# Open: http://localhost:5173/
+# Electron desktop app will launch automatically
+# Also available in browser: http://localhost:5173/
 
 # Rebuild main process after backend changes
 npm run build:main
+
+# Rebuild native modules if Node/Electron version changes
+npm rebuild better-sqlite3
 ```
 
 ---
 
 ## 📝 Notes
 
-- **Electron Issue**: Electron desktop app won't launch on WSL due to missing `libnss3.so` library. Browser view at http://localhost:5173/ works perfectly for development.
+- **Electron on WSL**: ✅ Now working! Required installing: `libnss3`, `libasound2t64`, and other dependencies
 - **Excel File**: Currently reading from `Billing _ AR Aging.xlsx` in project root. Will switch to Google Sheets in Phase 6.
-- **Mock Data**: Payment links and email sending are mocked for now. Real integrations come in Phase 6.
-- **Database**: SQLite DB is created at `~/.config/ar-aging-tracker/ar-tracker.db` (or equivalent user data path)
+- **Real Stripe API**: Using actual Stripe API with read-only restricted key (not mocked!)
+- **Database**: SQLite DB is created at `~/.config/ar-aging-tracker/ar-tracker.db`
+- **Security**: API keys encrypted using OS-level encryption (Keychain/DPAPI/libsecret)
+- **Dependencies**: If Electron fails to start, may need to rebuild native modules: `npm rebuild`
 
 ---
 
