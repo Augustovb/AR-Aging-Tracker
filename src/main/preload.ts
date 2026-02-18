@@ -20,6 +20,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   // Customers
   getAllCustomers: () => ipcRenderer.invoke('customers:getAll'),
+  getAllCustomersWithAR: () => ipcRenderer.invoke('customers:getAllWithAR'),
   getCustomerById: (id: string) => ipcRenderer.invoke('customers:getById', id),
   getCustomersWithOverdue: () => ipcRenderer.invoke('customers:getWithOverdueInvoices'),
 
@@ -48,6 +49,7 @@ export interface ElectronAPI {
   getInvoicesByCustomer: (customerId: string) => Promise<any[]>;
   getInvoiceSummary: () => Promise<any>;
   getAllCustomers: () => Promise<any[]>;
+  getAllCustomersWithAR: () => Promise<any[]>;
   getCustomerById: (id: string) => Promise<any>;
   getCustomersWithOverdue: () => Promise<any[]>;
   getEmailTemplates: () => Promise<any[]>;

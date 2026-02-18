@@ -81,6 +81,30 @@ export class CustomerRepository {
   }
 
   /**
+   * Get all customers with their AR summary (total owed, invoice count, worst category)
+   */
+  getAllWithAR(): any[] {
+    const stmt = this.db.prepare(`
+      SELECT
+        c.*,
+        COALESCE(SUM(i.amount), 0) as total_ar,
+        COUNT(i.id) as invoice_count,
+        MAX(i.days_overdue) as max_days_overdue,
+        CASE
+          WHEN SUM(CASE WHEN i.category = 'critical' THEN 1 ELSE 0 END) > 0 THEN 'critical'
+          WHEN SUM(CASE WHEN i.category = 'relevant' THEN 1 ELSE 0 END) > 0 THEN 'relevant'
+          WHEN SUM(CASE WHEN i.category = 'all90' THEN 1 ELSE 0 END) > 0 THEN 'all90'
+          ELSE NULL
+        END as worst_category
+      FROM customers c
+      LEFT JOIN invoices i ON c.id = i.customer_id AND i.status = 'open'
+      GROUP BY c.id
+      ORDER BY total_ar DESC
+    `);
+    return stmt.all();
+  }
+
+  /**
    * Delete all customers (for testing)
    */
   deleteAll(): void {

@@ -22,6 +22,7 @@ export const invoicesAPI = {
 
 export const customersAPI = {
   getAll: (): Promise<Customer[]> => api.getAllCustomers(),
+  getAllWithAR: (): Promise<any[]> => api.getAllCustomersWithAR(),
   getById: (id: string): Promise<Customer> => api.getCustomerById(id),
   getWithOverdue: (): Promise<Customer[]> => api.getCustomersWithOverdue(),
 };

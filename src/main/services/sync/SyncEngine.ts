@@ -51,8 +51,10 @@ export class SyncEngine {
       logger.info('Transforming data...');
       const { invoices, customers } = DataTransformer.transformExcelData(invoiceRows);
 
-      // Step 3: Store in database
+      // Step 3: Clear old data and store fresh import
       logger.info('Storing data in database...');
+      this.invoiceRepo.deleteAll();
+      this.customerRepo.deleteAll();
       this.customerRepo.batchUpsert(Array.from(customers.values()));
       this.invoiceRepo.batchUpsert(invoices);
 

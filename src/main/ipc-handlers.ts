@@ -46,8 +46,8 @@ export function registerIPCHandlers(): void {
     try {
       logger.info('Sync started');
 
-      // Use the Excel file in the project root
-      const excelPath = path.join(__dirname, '../../..', 'Billing _ AR Aging.xlsx');
+      // Use the Excel file in the project root (__dirname = dist/main/)
+      const excelPath = path.join(__dirname, '../..', 'Billing _ AR Aging.xlsx');
       const syncEngine = new SyncEngine(excelPath);
       const result = await syncEngine.sync();
 
@@ -114,6 +114,15 @@ export function registerIPCHandlers(): void {
       return customerRepo.getAll();
     } catch (error) {
       logger.error('Failed to get customers:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle(IPC_CHANNELS.CUSTOMERS_GET_ALL_WITH_AR, async () => {
+    try {
+      return customerRepo.getAllWithAR();
+    } catch (error) {
+      logger.error('Failed to get customers with AR:', error);
       throw error;
     }
   });

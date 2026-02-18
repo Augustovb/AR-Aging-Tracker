@@ -12,6 +12,7 @@ export const IPC_CHANNELS = {
 
   // Customers
   CUSTOMERS_GET_ALL: 'customers:getAll',
+  CUSTOMERS_GET_ALL_WITH_AR: 'customers:getAllWithAR',
   CUSTOMERS_GET_BY_ID: 'customers:getById',
   CUSTOMERS_GET_WITH_OVERDUE: 'customers:getWithOverdueInvoices',
 

@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS invoices (
   FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
+CREATE UNIQUE INDEX IF NOT EXISTS idx_invoices_number ON invoices(invoice_number);
 CREATE INDEX IF NOT EXISTS idx_invoices_customer ON invoices(customer_id);
 CREATE INDEX IF NOT EXISTS idx_invoices_due_date ON invoices(due_date);
 CREATE INDEX IF NOT EXISTS idx_invoices_status ON invoices(status);

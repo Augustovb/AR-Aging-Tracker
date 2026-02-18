@@ -49,11 +49,12 @@ export class DataTransformer {
         const daysOverdue = ARCalculationService.calculateDaysOverdue(dueDate);
         const ageBucket = ARCalculationService.assignAgeBucket(daysOverdue);
 
+        const invoiceNumber = String(row['Invoice #']);
         const invoice: Invoice = {
-          id: `inv_${randomUUID()}`,
+          id: `inv_${invoiceNumber}`,
           customer_id: customerId,
-          invoice_number: row['Invoice #'],
-          amount: row.Value,
+          invoice_number: invoiceNumber,
+          amount: typeof row.Value === 'number' ? row.Value : parseFloat(String(row.Value).replace(/[^0-9.-]/g, '')) || 0,
           currency: (row.Currency || 'usd').toLowerCase(),
           due_date: ARCalculationService.formatDate(dueDate),
           status: 'open',

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { invoicesAPI } from '../../services/api';
+import { invoicesAPI, stripeAPI } from '../../services/api';
 import type { Invoice, AgeBucket, ARCategory } from '../../types';
 import { format } from 'date-fns';
-import { Copy, ExternalLink } from 'lucide-react';
+import { Copy, ExternalLink, Check } from 'lucide-react';
 
 export default function InvoicesView() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -69,11 +69,17 @@ export default function InvoicesView() {
     );
   };
 
-  const copyPaymentLink = (invoiceNumber: string) => {
-    // Mock payment link for now
-    const link = `https://invoice.stripe.com/${invoiceNumber}`;
-    navigator.clipboard.writeText(link);
-    alert('Payment link copied to clipboard!');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const copyPaymentLink = async (invoiceId: string) => {
+    try {
+      const url = await stripeAPI.getPaymentLink(invoiceId);
+      await navigator.clipboard.writeText(url);
+      setCopiedId(invoiceId);
+      setTimeout(() => setCopiedId(null), 2000);
+    } catch (error) {
+      console.error('Failed to get payment link:', error);
+    }
   };
 
   if (loading) {
@@ -141,9 +147,6 @@ export default function InvoicesView() {
                   Customer
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Invoice #
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Amount
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -163,11 +166,8 @@ export default function InvoicesView() {
             <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
               {filteredInvoices.map((invoice) => (
                 <tr key={invoice.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white" title={`Invoice: ${invoice.invoice_number}`}>
                     {invoice.customer_name || 'Unknown'}
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
-                    {invoice.invoice_number}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-900 dark:text-white">
                     {formatCurrency(invoice.amount)}
@@ -186,11 +186,13 @@ export default function InvoicesView() {
                   <td className="px-4 py-3 whitespace-nowrap text-sm">
                     <div className="flex items-center gap-2">
                       <button
-                        onClick={() => copyPaymentLink(invoice.invoice_number)}
+                        onClick={() => copyPaymentLink(invoice.id)}
                         className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                         title="Copy payment link"
                       >
-                        <Copy size={16} className="text-gray-600 dark:text-gray-400" />
+                        {copiedId === invoice.id
+                          ? <Check size={16} className="text-green-600" />
+                          : <Copy size={16} className="text-gray-600 dark:text-gray-400" />}
                       </button>
                       <a
                         href={`https://dashboard.stripe.com/invoices/${invoice.invoice_number}`}

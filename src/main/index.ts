@@ -4,6 +4,7 @@ import logger from './utils/logger';
 import DatabaseService from './services/database/DatabaseService';
 import { registerIPCHandlers } from './ipc-handlers';
 import { ApiKeyManager } from './services/security/ApiKeyManager';
+import { SyncEngine } from './services/sync/SyncEngine';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -44,6 +45,16 @@ app.whenReady().then(async () => {
 
     // Register IPC handlers
     registerIPCHandlers();
+
+    // Auto-sync from Excel on startup
+    try {
+      const excelPath = path.join(__dirname, '../..', 'Billing _ AR Aging.xlsx');
+      const syncEngine = new SyncEngine(excelPath);
+      const result = await syncEngine.sync();
+      logger.info(`Auto-sync result: ${result.message}`);
+    } catch (syncError) {
+      logger.warn('Auto-sync skipped or failed:', syncError);
+    }
 
     // Create main window
     createWindow();

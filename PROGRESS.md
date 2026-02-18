@@ -1,26 +1,24 @@
 # AR Aging Tracker - Implementation Progress
 
-## Current Status: Phase 3 In Progress ⚙️
+## Current Status: Phase 3 Complete, Phase 4 Next
 
-Last Updated: February 12, 2025
+Last Updated: February 17, 2026
 
 ---
 
-## ✅ Completed Phases
+## Completed Phases
 
 ### Phase 1: Project Setup & Foundation
 **Status**: Complete
 **Commit**: 13ee29f
 
-- ✅ Project structure and configuration (TypeScript, Vite, Electron)
-- ✅ SQLite database with complete schema
-- ✅ React app with routing and navigation
-- ✅ Basic UI layout with TailwindCSS
-- ✅ IPC communication layer
-- ✅ Settings storage with encryption
-- ✅ Logger utility
-
-**Result**: App launches at http://localhost:5173/ with clean UI
+- Project structure and configuration (TypeScript, Vite, Electron)
+- SQLite database with complete schema
+- React app with routing and navigation
+- Basic UI layout with TailwindCSS
+- IPC communication layer
+- Settings storage with encryption
+- Logger utility
 
 ---
 
@@ -28,233 +26,161 @@ Last Updated: February 12, 2025
 **Status**: Complete
 **Commit**: 2b76dfc
 
-**Implemented**:
-- ✅ ExcelParser - Reads "Billing _ AR Aging.xlsx" directly
-- ✅ ARCalculationService - Calculates days overdue, age buckets, and categories
-- ✅ DataTransformer - Converts Excel rows to Invoice/Customer models
-- ✅ CustomerRepository & InvoiceRepository - Database operations with batch upserts
-- ✅ SyncEngine - Orchestrates the full import process
-- ✅ Sync IPC handlers - Wire up backend to frontend
-- ✅ Dashboard - Displays real AR summary metrics
-- ✅ InvoicesView - Full invoice table with filtering
+- ExcelParser - Reads "Billing _ AR Aging.xlsx" directly
+- ARCalculationService - Calculates days overdue, age buckets, and categories
+- DataTransformer - Converts Excel rows to Invoice/Customer models
+- CustomerRepository & InvoiceRepository - Database operations with batch upserts
+- SyncEngine - Orchestrates the full import process
+- Dashboard - Displays real AR summary metrics
+- InvoicesView - Full invoice table with filtering
 
-**AR Categories Implemented**:
-- **Critical**: >30 days overdue AND >$7,500
-- **Relevant**: >60 days overdue AND >$2,000
-- **All90**: >90 days overdue (any amount)
-
+**AR Categories**: Critical (>30d & >$7,500), Relevant (>60d & >$2,000), All90 (>90d any amount)
 **Age Buckets**: Current, 1-30, 31-60, 61-90, 90+
-
-**How to Test**:
-1. Open http://localhost:5173/
-2. Click "Sync Data" button in header
-3. View Dashboard - see Critical/Relevant/All90 totals
-4. View Invoices - see full list with filters by age bucket and category
-5. Try filtering by category (Critical, Relevant, 90+)
-
-**Result**: 999 invoices successfully imported and categorized from Excel file
 
 ---
 
 ### Phase 2.5: Security & Real Stripe Integration
 **Status**: Complete
-**Date**: February 12, 2025
 
-**Security Infrastructure**:
-- ✅ **ApiKeyManager** - Secure API key management with OS-level encryption
-- ✅ **Multi-layer encryption** - Uses Electron SafeStorage (Keychain/DPAPI/libsecret)
-- ✅ **.env file** - Git-ignored, keys encrypted on first load then cleared from memory
-- ✅ **SECURITY.md** - Complete security documentation
-
-**Stripe Integration**:
-- ✅ **StripeService** - Real Stripe API integration (replaced mock)
-- ✅ **Restricted API key** - Using read-only `rk_live_...` key for safety
-- ✅ **Payment link generation** - Ready to fetch Stripe payment links
-- ✅ **Customer statements** - Can pull data from Stripe API
-- ✅ **Connection testing** - Stripe API health check endpoint
-
-**WSL/Electron Fixes**:
-- ✅ Installed missing Linux libraries (libnss3, libasound2t64, etc.)
-- ✅ Fixed uuid import issues (replaced with Node's crypto.randomUUID)
-- ✅ Rebuilt better-sqlite3 for Electron's Node version
-- ✅ Electron now launches on WSL successfully
-
-**Key Features**:
-- API keys encrypted using OS keychain before storage
-- Keys never logged or exposed in code
-- Environment variables cleared from memory after encryption
-- Read-only Stripe key limits potential security impact
-
-**Files Created**:
-- `src/main/services/security/ApiKeyManager.ts`
-- `src/main/services/stripe/StripeService.ts`
-- `SECURITY.md`
-- `.env` (git-ignored)
+- ApiKeyManager - Secure API key management with OS-level encryption
+- StripeService - Real Stripe API integration (read-only restricted key)
+- Payment link generation, customer statements, connection testing
+- WSL/Electron compatibility fixes
 
 ---
 
-## 🔄 Next Phases (To Be Implemented)
+### Phase 3: Customer Views & Stripe Features
+**Status**: Complete
+**Date**: February 17, 2026
 
-### Phase 3: Stripe Features & Customer Views
-**Priority**: In Progress
-**Status**: Backend ready, frontend views pending
+**What was built**:
+- **Auto-sync on startup** - Excel data loads automatically, no manual click needed
+- **Fixed duplicate invoice bug** - Deterministic IDs based on invoice number; stale data cleared before each import
+- **Customer list view** - 173 customers with AR summary (total AR, invoice count, max overdue, worst category), search by name/email, click-to-drill
+- **Customer detail view** - Summary cards (Total AR, Open Invoices, Overdue count, ARR), critical invoice alerts, full invoice table
+- **Aging statement per customer** - Breakdown by bucket (Current, 1-30, 31-60, 61-90, 90+) with totals
+- **Real Stripe payment links** - Copy button calls Stripe API to get hosted_invoice_url, with check feedback icon
+- **View in Stripe** links on every invoice row
+- **Invoice IDs hidden** from UI (tucked into tooltip on hover)
+- **Browser guard** - Shows message when opened in Chrome instead of Electron
 
-**Completed**:
-- ✅ Real Stripe API backend integration (not mocked!)
-- ✅ IPC handlers for payment links and statements
-- ✅ Secure API key management
+**Bug fixes**:
+- Fixed Excel file path (was resolving to wrong directory)
+- Fixed Total Outstanding inflation caused by duplicate invoices on every sync
+- Added unique index on invoice_number to prevent future duplicates
 
-**Remaining Tasks**:
-- [ ] Customer detail view page
-- [ ] "Copy Payment Link" buttons in UI
-- [ ] Customer statements view
-- [ ] Open invoices list per customer
-- [ ] Update CustomersView to show customer list
-
-*Note*: Skipped mock implementation - using real Stripe API from the start!
+**Result**: 621 invoices and 173 customers from Excel, correct AR totals
 
 ---
 
-### Phase 4: Email System (Mock Sending)
-**Priority**: After Phase 3
-**Estimated**: 2-3 hours
+## Next Phases
 
-Tasks:
+### Phase 4: Email System with OAuth
+**Priority**: Next
+**Status**: Not started
+
+**Goal**: Send collection emails to customers from billing@... email via Google OAuth
+
+**Tasks**:
+- [ ] Google OAuth 2.0 setup for billing email (Gmail API)
+  - [ ] OAuth consent screen configuration
+  - [ ] Credential storage (refresh tokens encrypted via ApiKeyManager)
+  - [ ] OAuth flow UI in Settings (authorize/revoke)
+- [ ] Resolve customer billing emails
+  - [ ] Use Stripe customer ID to fetch billing email from Stripe API
+  - [ ] Fall back to Excel email column
+  - [ ] Store resolved emails in customers table
 - [ ] Email template manager (CRUD operations)
-- [ ] Template variable substitution ({{customer_name}}, {{amount}}, etc.)
+  - [ ] Template variable substitution ({{customer_name}}, {{amount}}, {{days_overdue}}, {{payment_link}})
+  - [ ] Pre-built templates: Friendly Reminder, Urgent Notice, Escalation (already in DB)
 - [ ] Email composer UI
-- [ ] Suggestion engine (calculates who to contact based on AR rules)
-- [ ] Priority scoring (high/medium/low)
-- [ ] Mock email sending (log to database, don't actually send)
-- [ ] Email history view per customer
+  - [ ] Select customer -> auto-populate template with their data
+  - [ ] Preview before sending
+  - [ ] Send via Gmail API (OAuth authenticated)
+- [ ] Suggestion engine - who to contact based on AR rules
+  - [ ] Priority scoring (high/medium/low)
+  - [ ] Suggested template per priority level
+- [ ] Email history tracking
+  - [ ] Log sent emails to database
+  - [ ] Email history view per customer in detail page
 
-*Note*: We'll log "sent" emails to database initially, connect real SMTP in Phase 6
+**Key dependency**: OAuth token for billing@... email must be granted before sending works.
 
 ---
 
 ### Phase 5: Dashboard & Multiple AR Views
 **Priority**: After Phase 4
-**Estimated**: 2-3 hours
 
 Tasks:
-- [ ] Enhanced dashboard with charts/graphs
+- [ ] Enhanced dashboard with charts/graphs (Recharts)
 - [ ] Category view with tabs (Critical, Relevant, All90)
 - [ ] Customer-grouped view (show total AR per customer)
 - [ ] Aging bucket view (collapsible sections)
 - [ ] Search functionality across customers and invoices
 - [ ] Export to CSV
 - [ ] Virtual scrolling for large datasets
-- [ ] Keyboard shortcuts (Cmd+R for sync, etc.)
 - [ ] Dark mode toggle
 
 ---
 
-### Phase 6: Real API Integrations
-**Priority**: Later (after core functionality works)
-**Estimated**: 3-4 hours
+### Phase 6: Polish & Integrations
+**Priority**: Final
 
 Tasks:
 - [ ] Google Sheets API sync (replace Excel file reading)
-- [ ] Settings UI for API keys (Google, Stripe, SMTP)
-- [ ] Real Stripe API integration
-  - [ ] Fetch actual payment links
-  - [ ] Get customer statements
-  - [ ] Query open invoices
-- [ ] Real SMTP email sending via Nodemailer
+- [ ] Settings UI for API keys and OAuth
+- [ ] Loading states and error boundaries
+- [ ] Toast notifications for user feedback
 - [ ] Connection testing for all APIs
 - [ ] Error handling and retry logic
 
 ---
 
-### Phase 7: Polish & Documentation
-**Priority**: Final touches
-**Estimated**: 1-2 hours
+## Working Features
 
-Tasks:
-- [ ] Loading states and error boundaries
-- [ ] Toast notifications for user feedback
-- [ ] Improve responsive design
-- [ ] Add keyboard shortcuts help modal
-- [ ] User documentation
-- [ ] Troubleshooting guide
-
-**Skipped for now**:
-- ❌ Packaging & Distribution (Electron installers)
-- ❌ Dedicated testing phase (testing as we go)
+1. Auto-sync from Excel on startup (621 invoices, 173 customers)
+2. Dashboard with AR summary cards (Critical, Relevant, All90)
+3. Invoice table with age bucket and category filtering
+4. Customer list with AR totals, search, drill-down
+5. Customer detail with aging statement breakdown
+6. Copy Stripe payment link to clipboard (real API)
+7. View in Stripe links
+8. Secure API key management (OS-level encryption)
 
 ---
 
-## 🎯 Current Focus
+## Technical Stack
 
-**Working Features**:
-1. ✅ Excel file import (click "Sync Data")
-2. ✅ Dashboard with AR summary cards
-3. ✅ Invoice table with 999 invoices
-4. ✅ Filtering by age bucket and category
-5. ✅ Days overdue calculation
-6. ✅ Automatic categorization
-
-**What You Can Do Now**:
-- ✅ Launch Electron app on WSL
-- ✅ Import AR data from Excel file (click "Sync Data")
-- ✅ View Critical AR ($1M+, >30 days)
-- ✅ View Relevant AR ($883k+, >60 days)
-- ✅ View All 90+ day invoices
-- ✅ Filter and explore invoice details
-- ✅ Secure Stripe API integration ready
-
-**What's Next Tomorrow**:
-- Build customer detail view page
-- Add "Copy Payment Link" buttons with real Stripe URLs
-- Implement customer statements UI
-- Populate CustomersView with customer list
-
----
-
-## 📊 Technical Stack
-
-- **Desktop**: Electron ✅ (now working on WSL!)
+- **Desktop**: Electron (WSL compatible)
 - **Frontend**: React 18 + TypeScript + TailwindCSS
 - **Database**: SQLite3 (better-sqlite3)
-- **Build**: Vite
-- **Date Handling**: date-fns
-- **Styling**: TailwindCSS + Lucide icons
+- **Build**: Vite + concurrently
 - **Payments**: Stripe API (read-only restricted key)
 - **Security**: Electron SafeStorage + OS-level encryption
+- **Icons**: Lucide React
+- **Date Handling**: date-fns
 
 ---
 
-## 🚀 Running the App
+## Running the App
 
 ```bash
 # Start development server (Vite + Electron)
 npm run dev
 
 # Electron desktop app will launch automatically
-# Also available in browser: http://localhost:5173/
-
-# Rebuild main process after backend changes
-npm run build:main
+# NOTE: Must use the Electron window, not browser at localhost:5173
 
 # Rebuild native modules if Node/Electron version changes
-npm rebuild better-sqlite3
+npx electron-rebuild -f -w better-sqlite3
 ```
 
 ---
 
-## 📝 Notes
+## Notes
 
-- **Electron on WSL**: ✅ Now working! Required installing: `libnss3`, `libasound2t64`, and other dependencies
-- **Excel File**: Currently reading from `Billing _ AR Aging.xlsx` in project root. Will switch to Google Sheets in Phase 6.
-- **Real Stripe API**: Using actual Stripe API with read-only restricted key (not mocked!)
-- **Database**: SQLite DB is created at `~/.config/ar-aging-tracker/ar-tracker.db`
-- **Security**: API keys encrypted using OS-level encryption (Keychain/DPAPI/libsecret)
-- **Dependencies**: If Electron fails to start, may need to rebuild native modules: `npm rebuild`
-
----
-
-## 🔗 Repository
-
-https://github.com/Augustovb/AR-Aging-Tracker
-
-Latest commit: 2b76dfc (Phase 2 complete)
+- **Electron only**: App requires the Electron window (not Chrome) because it uses IPC to access SQLite, Stripe API, and file system
+- **Excel File**: Reading from `Billing _ AR Aging.xlsx` in project root
+- **Database**: SQLite DB at `~/.config/ar-aging-tracker/ar-tracker.db`
+- **Sync behavior**: Each startup clears and re-imports from Excel (ensures no duplicates)
+- **Invoice IDs**: Internal UUIDs hidden from UI; invoice numbers shown only on hover/tooltip
