@@ -27,12 +27,13 @@ export interface Invoice {
 }
 
 export type AgeBucket = 'current' | '1-30' | '31-60' | '61-90' | '90+';
-export type ARCategory = 'critical' | 'relevant' | 'all90';
+export type ARCategory = 'critical' | 'relevant' | 'all90' | 'standard';
 
 export interface ARSummary {
   critical: { total: number; count: number; customer_count: number };
   relevant: { total: number; count: number; customer_count: number };
   all90: { total: number; count: number; customer_count: number };
+  standard: { total: number; count: number; customer_count: number };
   by_bucket: {
     [key in AgeBucket]: { total: number; count: number };
   };

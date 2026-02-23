@@ -1,0 +1,1732 @@
+[
+  {
+    "id": "cus_T75GeC0lSTsXP7",
+    "name": "Tide",
+    "email": "rohit.divate@tide.co",
+    "arr": 70000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T75GeC0lSTsXP7",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TMW3ryCelLzBbK",
+    "name": "Thorne HealthTech",
+    "email": "AccountsPayable@thorne.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TMW3ryCelLzBbK",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T3rWcx6xG67cjV",
+    "name": "Innovative Systems",
+    "email": "APInvoices@innovsys.com",
+    "arr": 48000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T3rWcx6xG67cjV",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TPAa4ZSlyrCLHL",
+    "name": "Clipboard Health",
+    "email": "harry.lee@clipboardhealth.co",
+    "arr": 0,
+    "tenant": null,
+    "stripe_customer_id": "cus_TPAa4ZSlyrCLHL",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QkN93lQYCrEynQ",
+    "name": "Masterclass",
+    "email": "maikao.grare@masterclass.com",
+    "arr": 39500,
+    "tenant": null,
+    "stripe_customer_id": "cus_QkN93lQYCrEynQ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TZNmLLHQ5QtrmS",
+    "name": "Antora Energy",
+    "email": "ap@antora.energy",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TZNmLLHQ5QtrmS",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_OMoTSTlMtNLvPN",
+    "name": "HoneyBook",
+    "email": "ap@honeybook.com",
+    "arr": 36720,
+    "tenant": null,
+    "stripe_customer_id": "cus_OMoTSTlMtNLvPN",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T19oYTU42wP6JT",
+    "name": "Funding Societies",
+    "email": "junxiong.ho@fundingsocieties.com",
+    "arr": 35000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T19oYTU42wP6JT",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_L1v6YCT7jgV6TJ",
+    "name": "Konfio",
+    "email": "isian.diaz@konfio.mx",
+    "arr": 20454,
+    "tenant": null,
+    "stripe_customer_id": "cus_L1v6YCT7jgV6TJ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RL9fyPlKNTcpHc",
+    "name": "AVA Labs",
+    "email": "stefani.johnson@avalabs.org",
+    "arr": 35000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RL9fyPlKNTcpHc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TlKmBBv5lWmLWq",
+    "name": "TruTechnologies",
+    "email": "accounting@tru.team",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TlKmBBv5lWmLWq",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TUOY7fQy2hY6j8",
+    "name": "Seso",
+    "email": "ap@sesoalabor.com",
+    "arr": 0,
+    "tenant": null,
+    "stripe_customer_id": "cus_TUOY7fQy2hY6j8",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TXTXXZLoP8Cdbz",
+    "name": "Ned's Home",
+    "email": "AP@nedshome.com",
+    "arr": 0,
+    "tenant": null,
+    "stripe_customer_id": "cus_TXTXXZLoP8Cdbz",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SzPdFDfWn0XLSH",
+    "name": "Mechanism Ventures",
+    "email": "accounting@mechanism.com",
+    "arr": 30000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SzPdFDfWn0XLSH",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T4AJv1K7WoTmvc",
+    "name": "Ntracts",
+    "email": "droberts@ntracts.com",
+    "arr": 30000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T4AJv1K7WoTmvc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QOu6f8KjuVPmyL",
+    "name": "Moniepoint",
+    "email": "teinololunda@moniepoint.com",
+    "arr": 30000,
+    "tenant": null,
+    "stripe_customer_id": "cus_QOu6f8KjuVPmyL",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TNLjsu5DVObmZs",
+    "name": "Princeton10",
+    "email": "invoices@princeton10.net",
+    "arr": 0,
+    "tenant": null,
+    "stripe_customer_id": "cus_TNLjsu5DVObmZs",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PB4BtbSVaXcHF1",
+    "name": "oliver@skipcapital.com",
+    "email": "oliver@skipcapital.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_PB4BtbSVaXcHF1",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Qk06Ob6NNJUHUn",
+    "name": "BigID",
+    "email": "accountspayable@bigid.com",
+    "arr": 29350,
+    "tenant": null,
+    "stripe_customer_id": "cus_Qk06Ob6NNJUHUn",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TkZgqaQKO9lHVx",
+    "name": "alan@forme.science",
+    "email": "alan@forme.science",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TkZgqaQKO9lHVx",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TNjc8WSQ8OVAAC",
+    "name": "HAAS Alert",
+    "email": "ap@haasalert.com",
+    "arr": 0,
+    "tenant": null,
+    "stripe_customer_id": "cus_TNjc8WSQ8OVAAC",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RQ21ugIl23Gzg2",
+    "name": "Harvey",
+    "email": "ap@harvey.ai",
+    "arr": 27500,
+    "tenant": null,
+    "stripe_customer_id": "cus_RQ21ugIl23Gzg2",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T6R1Q1YQJTJJsb",
+    "name": "Rhino Federated Computing",
+    "email": "rhinohealth+invoices@airbase-mail.com",
+    "arr": 27000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T6R1Q1YQJTJJsb",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SVhDGjw2FGio7S",
+    "name": "CreateFuture",
+    "email": "finance@createfuture.com",
+    "arr": 24750,
+    "tenant": null,
+    "stripe_customer_id": "cus_SVhDGjw2FGio7S",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PIQfsBw3FYdB45",
+    "name": "Checkr",
+    "email": "AP@checkr.com",
+    "arr": 25596,
+    "tenant": null,
+    "stripe_customer_id": "cus_PIQfsBw3FYdB45",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QFBsT4SoJcIaVo",
+    "name": "Automatiq",
+    "email": "automatiq@ap.ramp.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_QFBsT4SoJcIaVo",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Sr9ZPSYhmKGCSD",
+    "name": "i5invest",
+    "email": "accounting@i5growth.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_Sr9ZPSYhmKGCSD",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SQqXZN6vQrbKnv",
+    "name": "Tabs",
+    "email": "finance@tabsplatform.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SQqXZN6vQrbKnv",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RQMTDppfDAqool",
+    "name": "maxwell@intelvio.com",
+    "email": "maxwell@intelvio.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_RQMTDppfDAqool",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_STTUEuhLh0YHjg",
+    "name": "Airbyte",
+    "email": "invoice@airbyte.io",
+    "arr": 23000,
+    "tenant": null,
+    "stripe_customer_id": "cus_STTUEuhLh0YHjg",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RQ1TfcVHgW82kF",
+    "name": "WorkBoard",
+    "email": "accounting@workboard.com",
+    "arr": 22000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RQ1TfcVHgW82kF",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_NEmWKc0PC5JkNv",
+    "name": "ani@ycombinator.com",
+    "email": "ani@ycombinator.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_NEmWKc0PC5JkNv",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SGm6CsFHEA2zVq",
+    "name": "Reapit",
+    "email": "accountspayable@reapit.com",
+    "arr": 42400,
+    "tenant": null,
+    "stripe_customer_id": "cus_SGm6CsFHEA2zVq",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SauNywevraRugr",
+    "name": "Factorial Funds",
+    "email": "ap@factorialfunds.com",
+    "arr": 20000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SauNywevraRugr",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_R1fJeg2I2t1r6Q",
+    "name": "Lifestraw",
+    "email": "accountspayable@lifestraw.com",
+    "arr": 23000,
+    "tenant": null,
+    "stripe_customer_id": "cus_R1fJeg2I2t1r6Q",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_ShJuUpRsoU6W7V",
+    "name": "The EVERY Company",
+    "email": "ap@every.com",
+    "arr": 30000,
+    "tenant": null,
+    "stripe_customer_id": "cus_ShJuUpRsoU6W7V",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_OMofA9stbTvqXf",
+    "name": "CoderPad",
+    "email": "brian@coderpad.io",
+    "arr": 20000,
+    "tenant": null,
+    "stripe_customer_id": "cus_OMofA9stbTvqXf",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PvYfVkhmrNGYjx",
+    "name": "Eight Sleep",
+    "email": "ap@eightsleep.com",
+    "arr": 35000,
+    "tenant": null,
+    "stripe_customer_id": "cus_PvYfVkhmrNGYjx",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TI0lxFhIwKtFA3",
+    "name": "Eden Capital",
+    "email": "frank@edencp.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_TI0lxFhIwKtFA3",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SWlIwDabUM01Zu",
+    "name": "vatsal@lineal.cpa",
+    "email": "vatsal@lineal.cpa",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_SWlIwDabUM01Zu",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SDheoIMqayAuGx",
+    "name": "Graphite",
+    "email": "ap@graphitefinancial.com",
+    "arr": 97000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SDheoIMqayAuGx",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_MKde3CmGMkJzXZ",
+    "name": "Turo",
+    "email": "ap@turo.com",
+    "arr": 23400,
+    "tenant": null,
+    "stripe_customer_id": "cus_MKde3CmGMkJzXZ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_S0HUHaItVZwkmF",
+    "name": "Crusoe Energy",
+    "email": "ap@crusoe.ai",
+    "arr": 46500,
+    "tenant": null,
+    "stripe_customer_id": "cus_S0HUHaItVZwkmF",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_R3S6vNoxvzWZ1A",
+    "name": "emmanuel@fillip.com",
+    "email": "emmanuel@fillip.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_R3S6vNoxvzWZ1A",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Qc7QMNaiosfHn3",
+    "name": "Wunderkind",
+    "email": "accounting@wunderkind.co",
+    "arr": 45000,
+    "tenant": null,
+    "stripe_customer_id": "cus_Qc7QMNaiosfHn3",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Qi2OwOygNanvOd",
+    "name": "Extreme Reach",
+    "email": "accountspayable.eri.us@extremereach.com",
+    "arr": 55000,
+    "tenant": null,
+    "stripe_customer_id": "cus_Qi2OwOygNanvOd",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Q4jAgo9tDjsc6q",
+    "name": "accounting@moneylion.com",
+    "email": "accounting@moneylion.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_Q4jAgo9tDjsc6q",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PIQfa5ysr31aUU",
+    "name": "invoices@covetool.com",
+    "email": "invoices@covetool.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_PIQfa5ysr31aUU",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Sdz8EPWsC5kEbn",
+    "name": "PrizePicks",
+    "email": "accounting@prizepicks.com",
+    "arr": 42000,
+    "tenant": null,
+    "stripe_customer_id": "cus_Sdz8EPWsC5kEbn",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T0vjFKRdrWbEaf",
+    "name": "Mixbook",
+    "email": "invoice@mixbook.com",
+    "arr": 35000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T0vjFKRdrWbEaf",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TWz0gxsQXTfWF7",
+    "name": "RunBuggy",
+    "email": "accounting@runbuggy.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TWz0gxsQXTfWF7",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RvKWMZp0SAUMTa",
+    "name": "Curb Home Services",
+    "email": "kendall.hoyd@curbhome.com",
+    "arr": 32000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RvKWMZp0SAUMTa",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QOgdp1EBXfwy4F",
+    "name": "Docusketch",
+    "email": "ap@docusketch.com",
+    "arr": 30000,
+    "tenant": null,
+    "stripe_customer_id": "cus_QOgdp1EBXfwy4F",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TdlpWOJOnfeZBe",
+    "name": "Graylog",
+    "email": "accounting@graylog.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TdlpWOJOnfeZBe",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SMWZdkVLRrxguT",
+    "name": "Volley Games",
+    "email": "invoices@volleygames.com",
+    "arr": 27000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SMWZdkVLRrxguT",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RdQfGp7NaPPVJf",
+    "name": "Curalta",
+    "email": "bills@curalta.com",
+    "arr": 26000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RdQfGp7NaPPVJf",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_R4H7JFBX7moovZ",
+    "name": "Haiilo",
+    "email": "invoice.de@haiilo.com",
+    "arr": 25750,
+    "tenant": null,
+    "stripe_customer_id": "cus_R4H7JFBX7moovZ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RkWNgnSYvKOuJj",
+    "name": "Float Financial",
+    "email": "finance@floatcard.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RkWNgnSYvKOuJj",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_S40axJOPxjNsLc",
+    "name": "Guideline",
+    "email": "ap@guideline.ai",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_S40axJOPxjNsLc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SUYFNiOondVm3F",
+    "name": "ELSA",
+    "email": "invoice@elsanow.io",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SUYFNiOondVm3F",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RQ1yy2V46cIQHV",
+    "name": "accounting@mykaarma.com",
+    "email": "accounting@mykaarma.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_RQ1yy2V46cIQHV",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_OWxOfrXrzuQ76Q",
+    "name": "Luxury Presence",
+    "email": "dave@luxurypresence.com",
+    "arr": 29550,
+    "tenant": null,
+    "stripe_customer_id": "cus_OWxOfrXrzuQ76Q",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Ry2Ms0q1rfIZTX",
+    "name": "Forterra",
+    "email": "postrosky@forterra.com",
+    "arr": 36000,
+    "tenant": null,
+    "stripe_customer_id": "cus_Ry2Ms0q1rfIZTX",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RbZla9zbDMFMpI",
+    "name": "Substack",
+    "email": "accounting@substackinc.com",
+    "arr": 18000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RbZla9zbDMFMpI",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RVuoByZR1Y9Grg",
+    "name": "mcfarlin@rcmindustries.com",
+    "email": "mcfarlin@rcmindustries.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_RVuoByZR1Y9Grg",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_OjcviTLg2doE1K",
+    "name": "Quid",
+    "email": "jcollum@netbasequid.com",
+    "arr": 18000,
+    "tenant": null,
+    "stripe_customer_id": "cus_OjcviTLg2doE1K",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SNwHEN3alEYSs2",
+    "name": "Madison Logic",
+    "email": "ap@madisonlogic.com",
+    "arr": 36000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SNwHEN3alEYSs2",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_MKdb2LsxK6YnrJ",
+    "name": "Quince",
+    "email": "ap@onequince.com",
+    "arr": 15000,
+    "tenant": null,
+    "stripe_customer_id": "cus_MKdb2LsxK6YnrJ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RPrFYxhB6Yshtc",
+    "name": "Roller Software",
+    "email": "mark@rollerdigital.com",
+    "arr": 30875,
+    "tenant": null,
+    "stripe_customer_id": "cus_RPrFYxhB6Yshtc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_MPpuK5CwHHgEF6",
+    "name": "Rappi",
+    "email": "mxproveedores@rappi.com",
+    "arr": 91850,
+    "tenant": null,
+    "stripe_customer_id": "cus_MPpuK5CwHHgEF6",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RXltUUqkxrcmOx",
+    "name": "Nira Medical Group",
+    "email": "accounts.payable@niramedical.com",
+    "arr": 15000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RXltUUqkxrcmOx",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SQbmYVYgW1Ht1Y",
+    "name": "Flashbots",
+    "email": "finance@flashbots.net",
+    "arr": 22000,
+    "tenant": null,
+    "stripe_customer_id": "cus_SQbmYVYgW1Ht1Y",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Ojd3SOSWYvBMK6",
+    "name": "launchboxap@bill.com",
+    "email": "launchboxap@bill.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_Ojd3SOSWYvBMK6",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PB47QwZLqKvho4",
+    "name": "Kueski",
+    "email": "facturas@kueski.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_PB47QwZLqKvho4",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T94hilyMZwoUUR",
+    "name": "Anthro Energy",
+    "email": "AP@anthroenergy.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T94hilyMZwoUUR",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RL8DEF9dBVQ1YT",
+    "name": "Antheia",
+    "email": "accounting_AP@antheia.bio",
+    "arr": 24800,
+    "tenant": null,
+    "stripe_customer_id": "cus_RL8DEF9dBVQ1YT",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_NoHgZOj02bMsKN",
+    "name": "kendrew@tealbook.com",
+    "email": "kendrew@tealbook.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_NoHgZOj02bMsKN",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Nr0hQbhIwl7rGI",
+    "name": "will@bondcap.com",
+    "email": "will@bondcap.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_Nr0hQbhIwl7rGI",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_M5XIUQDCscdnFc",
+    "name": "Dandelion Energy",
+    "email": "AP@dandelionenergy.com",
+    "arr": 22200,
+    "tenant": null,
+    "stripe_customer_id": "cus_M5XIUQDCscdnFc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Rz7SZu1BweEz0Y",
+    "name": "PLS 3rd Learning",
+    "email": "ap@pls3rdlearning.com",
+    "arr": 22000,
+    "tenant": null,
+    "stripe_customer_id": "cus_Rz7SZu1BweEz0Y",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Ksgfl1tRVpTjEL",
+    "name": "joseignacio@frubana.com",
+    "email": "joseignacio@frubana.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_Ksgfl1tRVpTjEL",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PB5PGf5PHaLHvc",
+    "name": "Public",
+    "email": "invoice-approved@public.com",
+    "arr": 20000,
+    "tenant": null,
+    "stripe_customer_id": "cus_PB5PGf5PHaLHvc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_OWxNKk5cbZwUkn",
+    "name": "Quilt",
+    "email": "ystrunga@quiltsoftware.com",
+    "arr": 33000,
+    "tenant": null,
+    "stripe_customer_id": "cus_OWxNKk5cbZwUkn",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Q1WnuPU5IZZV7L",
+    "name": "Attivo Partners",
+    "email": "ops@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Q1WnuPU5IZZV7L",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PB5RMenAItEqTF",
+    "name": "Hungryroot",
+    "email": "accounting@hungryroot.com",
+    "arr": 29630,
+    "tenant": null,
+    "stripe_customer_id": "cus_PB5RMenAItEqTF",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Nzekiec5C0iYUy",
+    "name": "Pine Park Health",
+    "email": "adeel@pineparkhealth.com",
+    "arr": 17400,
+    "tenant": null,
+    "stripe_customer_id": "cus_Nzekiec5C0iYUy",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T5HIMgIU37CROu",
+    "name": "Helius",
+    "email": "ap@helius.xyz",
+    "arr": 31000,
+    "tenant": null,
+    "stripe_customer_id": "cus_T5HIMgIU37CROu",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PvYhVqUuiigZKP",
+    "name": "Emi Labs",
+    "email": "julieta.ponieman@emilabs.ai",
+    "arr": 18000,
+    "tenant": null,
+    "stripe_customer_id": "cus_PvYhVqUuiigZKP",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RR3f0f6xgEX5iL",
+    "name": "Attivo Partners",
+    "email": "bitwave1@bill.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RR3f0f6xgEX5iL",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RdqKxmRIpID32z",
+    "name": "Attivo Partners",
+    "email": "finance@onaroll.co",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RdqKxmRIpID32z",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_LMhg0X1jGp286R",
+    "name": "Cyara",
+    "email": "mark.verbeck@cyara.com",
+    "arr": 12000,
+    "tenant": null,
+    "stripe_customer_id": "cus_LMhg0X1jGp286R",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QFBsacKqXPFDjk",
+    "name": "Kustomer",
+    "email": "accountspayable@kustomer.com",
+    "arr": 12000,
+    "tenant": null,
+    "stripe_customer_id": "cus_QFBsacKqXPFDjk",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TCqv9e3PNudbMa",
+    "name": "revops@getaleph.com",
+    "email": "revops@getaleph.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_TCqv9e3PNudbMa",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RncLztnQUFuDOn",
+    "name": "Attivo Partners",
+    "email": "accountant@blackforestlabs.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RncLztnQUFuDOn",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_S4MVHee7xcLkCo",
+    "name": "Vivo Infusion",
+    "email": "acctpay@vivoinfusion.com",
+    "arr": 46000,
+    "tenant": null,
+    "stripe_customer_id": "cus_S4MVHee7xcLkCo",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SyturL1SheAZEL",
+    "name": "Till CFO",
+    "email": "bo@tillcfo.com",
+    "arr": 17600,
+    "tenant": null,
+    "stripe_customer_id": "cus_SyturL1SheAZEL",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_OMotVfPsGRAc5O",
+    "name": "elizabeth.homer@apploi.com",
+    "email": "elizabeth.homer@apploi.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_OMotVfPsGRAc5O",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SGJApPpf595EaU",
+    "name": "Attivo Partners",
+    "email": "accounting@lumos.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SGJApPpf595EaU",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RUsaU1Dhudxi0m",
+    "name": "Attivo Partners",
+    "email": "accounting@roon.care",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RUsaU1Dhudxi0m",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RNNite1cWooKzM",
+    "name": "Attivo Partners",
+    "email": "nfarra@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RNNite1cWooKzM",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RUsaP8S6SLTWZ3",
+    "name": "Attivo Partners",
+    "email": "bmunoz@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RUsaP8S6SLTWZ3",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RNieFiQdhwXqmD",
+    "name": "Attivo Partners",
+    "email": "jcraig@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RNieFiQdhwXqmD",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RUsaGhOMQe9IMv",
+    "name": "Attivo Partners",
+    "email": "csechel@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RUsaGhOMQe9IMv",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SGPC9D6RcQinAs",
+    "name": "Attivo Partners",
+    "email": "accounting@ditto.live",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SGPC9D6RcQinAs",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SVnv5I3EaTZ65X",
+    "name": "Attivo Partners",
+    "email": "Accounting@subject.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SVnv5I3EaTZ65X",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SoPUD4CRoyBMmW",
+    "name": "Attivo Partners",
+    "email": "accounting@rhinotherapeutics.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SoPUD4CRoyBMmW",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SoPRZa2bsnCNRI",
+    "name": "Attivo Partners",
+    "email": "accounting@proximi-t.bio",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SoPRZa2bsnCNRI",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Rld6RqYDKil4nX",
+    "name": "Attivo Partners",
+    "email": "accounting@vinzymes.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Rld6RqYDKil4nX",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Rld46qGJhSXnBf",
+    "name": "Attivo Partners",
+    "email": "accounting@amplifye.co",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Rld46qGJhSXnBf",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TUO1GRWRaiK1Ly",
+    "name": "Nuon",
+    "email": "billing@nuon.co",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_TUO1GRWRaiK1Ly",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_S11dmfuXZVwX1b",
+    "name": "Attivo Partners",
+    "email": "nico@altera.al",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_S11dmfuXZVwX1b",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_S6nmNIPedGTkTK",
+    "name": "Attivo Partners",
+    "email": "accounting@figment.company",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_S6nmNIPedGTkTK",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Nr0g0K21z9XduK",
+    "name": "David Todrin",
+    "email": "david@davidtodrin.com",
+    "arr": 2400,
+    "tenant": null,
+    "stripe_customer_id": "cus_Nr0g0K21z9XduK",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QzJTDV9BBYkepz",
+    "name": "Attivo Partners",
+    "email": "billing@andromeda.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QzJTDV9BBYkepz",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SReItXmTDTEnqi",
+    "name": "ap-us@wondersco.com",
+    "email": "ap-us@wondersco.com",
+    "arr": null,
+    "tenant": null,
+    "stripe_customer_id": "cus_SReItXmTDTEnqi",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RYzP8yRzpezH2h",
+    "name": "CloudTrucks",
+    "email": "ap@cloudtrucks.com",
+    "arr": 25000,
+    "tenant": null,
+    "stripe_customer_id": "cus_RYzP8yRzpezH2h",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SGOSlh9CSd6Hem",
+    "name": "Attivo Partners",
+    "email": "accounting@wand.tech",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SGOSlh9CSd6Hem",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SMJlqDkCQtsXNb",
+    "name": "Attivo Partners",
+    "email": "accounting@mantadigital.io",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SMJlqDkCQtsXNb",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QjYjIQGXa5n1sP",
+    "name": "Attivo Partners",
+    "email": "edelosreyes@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QjYjIQGXa5n1sP",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRJVUCAOa2s1",
+    "name": "Attivo Partners",
+    "email": "finance@oscilar.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRJVUCAOa2s1",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRqY0o3JMzni",
+    "name": "Attivo Partners",
+    "email": "alake@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRqY0o3JMzni",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRx0546iHrMD",
+    "name": "Attivo Partners",
+    "email": "cjacquay@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRx0546iHrMD",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TKhpdb5zWRTrcG",
+    "name": "Attivo Partners",
+    "email": "ap@usepylon.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_TKhpdb5zWRTrcG",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RyJIq4fJWDnhol",
+    "name": "Attivo Partners",
+    "email": "accounting@swapkit.dev",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RyJIq4fJWDnhol",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RxhwpafJAG5eVz",
+    "name": "Attivo Partners",
+    "email": "accounting@floodbase.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RxhwpafJAG5eVz",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnR1Bs3BlNrmq",
+    "name": "Attivo Partners",
+    "email": "adizon@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnR1Bs3BlNrmq",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T1rBqNc4GW4lcd",
+    "name": "Attivo Partners",
+    "email": "han.yan@genesis-ai.company",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_T1rBqNc4GW4lcd",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SwbtxdJ1LsYxqa",
+    "name": "Attivo Partners",
+    "email": "accounting@tempo.xyz",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SwbtxdJ1LsYxqa",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SwdAV3ht6yJQku",
+    "name": "Attivo Partners",
+    "email": "accounting@backflip.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SwdAV3ht6yJQku",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_ShJR12xaUKV83X",
+    "name": "Attivo Partners",
+    "email": "accounting@arirobots.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_ShJR12xaUKV83X",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SKzSgjStkv3jGc",
+    "name": "Attivo Partners",
+    "email": "accounting@merit.systems",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SKzSgjStkv3jGc",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T900t2QSMpExAe",
+    "name": "Attivo Partners",
+    "email": "accounting@latenthealth.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_T900t2QSMpExAe",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SeRBVqopleFVUl",
+    "name": "Attivo Partners",
+    "email": "accounting@capstack.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SeRBVqopleFVUl",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T76celjyS0CTvx",
+    "name": "Attivo Partners",
+    "email": "cezhang@photalabs.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_T76celjyS0CTvx",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_StnbaEXGB9g8VM",
+    "name": "Attivo Partners",
+    "email": "accounting@arenainstitute.org",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_StnbaEXGB9g8VM",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SWvvu8BqmI8ghE",
+    "name": "Attivo Partners",
+    "email": "matt@logosspace.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SWvvu8BqmI8ghE",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SoHMiKsg3iQcxh",
+    "name": "Attivo Partners",
+    "email": "attivo@create.xyz",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SoHMiKsg3iQcxh",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_StOW90WByc6MWU",
+    "name": "Attivo Partners",
+    "email": "operations@bigscreenvr.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_StOW90WByc6MWU",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SzKYU5MXD1jZgy",
+    "name": "Attivo Partners",
+    "email": "accounting@usenovi.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SzKYU5MXD1jZgy",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SblNcgYDPfNLHe",
+    "name": "Attivo Partners",
+    "email": "accounting@bmg-labs.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SblNcgYDPfNLHe",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SblJ2if5baekoX",
+    "name": "Attivo Partners",
+    "email": "accounting@diffusedrive.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SblJ2if5baekoX",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SiryeVHBE19HTZ",
+    "name": "Attivo Partners",
+    "email": "accounting@eternalabs.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SiryeVHBE19HTZ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_T4eeCQ0Ar0NYwA",
+    "name": "Attivo Partners",
+    "email": "accounting@fabrion.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_T4eeCQ0Ar0NYwA",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Sw0vBZ7T7cQbdi",
+    "name": "Attivo Partners",
+    "email": "accounting@onrover.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Sw0vBZ7T7cQbdi",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Sgulu6CwXNGlDD",
+    "name": "Attivo Partners",
+    "email": "accounting@yemayabio.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Sgulu6CwXNGlDD",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SotknZtGADWFQa",
+    "name": "Attivo Partners",
+    "email": "morgan@etherealize.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SotknZtGADWFQa",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRBqcOY8KQXN",
+    "name": "Attivo Partners",
+    "email": "accounting@lorentz.bio",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRBqcOY8KQXN",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Pty3wqEmUNItwS",
+    "name": "Attivo Partners",
+    "email": "adizon@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Pty3wqEmUNItwS",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRkHt3NKdOeQ",
+    "name": "Attivo Partners",
+    "email": "accounting@range.co",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRkHt3NKdOeQ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnR90zOtuVQpY",
+    "name": "Attivo Partners",
+    "email": "edohan@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnR90zOtuVQpY",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnR8qLWzMGuLC",
+    "name": "Attivo Partners",
+    "email": "edelosreyes@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnR8qLWzMGuLC",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QZ7XkHmgSQ9e8C",
+    "name": "Attivo Partners",
+    "email": "bnewsome@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QZ7XkHmgSQ9e8C",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QMizHzF0VyQJvb",
+    "name": "Attivo Partners",
+    "email": "edohan@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QMizHzF0VyQJvb",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Qef9t95DvFVcJH",
+    "name": "Attivo Partners",
+    "email": "jhu@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Qef9t95DvFVcJH",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PtBJVPX3QgS2jJ",
+    "name": "Attivo Partners",
+    "email": "alcober@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_PtBJVPX3QgS2jJ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnROUOHPiEzUx",
+    "name": "Attivo Partners",
+    "email": "carlojcoronel@gmail.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnROUOHPiEzUx",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QiTGp0mRuhvev4",
+    "name": "Attivo Partners",
+    "email": "accounting@decrypt.bio",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QiTGp0mRuhvev4",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRIamwPuVzLi",
+    "name": "Attivo Partners",
+    "email": "liquiditea@nibiru.org",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRIamwPuVzLi",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRmOaIdkHzMO",
+    "name": "Attivo Partners",
+    "email": "liquiditea@nibiru.org",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRmOaIdkHzMO",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_PoLqVsb1H35ObG",
+    "name": "Attivo Partners",
+    "email": "jviray@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_PoLqVsb1H35ObG",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QuOf7gnD4nDl4B",
+    "name": "Attivo Partners",
+    "email": "edelosreyes@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QuOf7gnD4nDl4B",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnRfgki63HIAr",
+    "name": "Attivo Partners",
+    "email": "accounting@remunix.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnRfgki63HIAr",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_R02nW8pG2kDV8X",
+    "name": "Attivo Partners",
+    "email": "ddrewes@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_R02nW8pG2kDV8X",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_QwnGWlNHKU8X3k",
+    "name": "Attivo Partners",
+    "email": "accounting@bastion.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_QwnGWlNHKU8X3k",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RUsazT6Kjg54d8",
+    "name": "Attivo Partners",
+    "email": "dyeldandi@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RUsazT6Kjg54d8",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TNUaqHRMwldPk7",
+    "name": "Attivo Partners",
+    "email": "aj@getbrava.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_TNUaqHRMwldPk7",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TA6kh4YKy1RdbC",
+    "name": "Attivo Partners",
+    "email": "renee.ryan@pinprint.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_TA6kh4YKy1RdbC",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TKfEVdo1llQOaZ",
+    "name": "Attivo Partners",
+    "email": "accountant@psdn.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_TKfEVdo1llQOaZ",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TBvwBnvQ9S1Kne",
+    "name": "Attivo Partners",
+    "email": "accounting@obin.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_TBvwBnvQ9S1Kne",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_TCucZo8p9PCE7C",
+    "name": "Attivo Partners",
+    "email": "jenah.bielza@thirddimension.ai",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_TCucZo8p9PCE7C",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_RUsavUYYTrWkiV",
+    "name": "Attivo Partners",
+    "email": "lholley@attivopartners.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_RUsavUYYTrWkiV",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_Ry2aHMVMxU7rYC",
+    "name": "Attivo Partners",
+    "email": "accounting@kestrelintelligence.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_Ry2aHMVMxU7rYC",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  },
+  {
+    "id": "cus_SZqX4uyKJO2xZA",
+    "name": "Attivo Partners",
+    "email": "accounting@inqb8medtech.com",
+    "arr": 158868,
+    "tenant": null,
+    "stripe_customer_id": "cus_SZqX4uyKJO2xZA",
+    "created_at": "2026-02-23T21:01:12.880Z",
+    "updated_at": "2026-02-23T21:01:12.880Z"
+  }
+]

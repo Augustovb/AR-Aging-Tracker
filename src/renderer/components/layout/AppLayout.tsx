@@ -1,6 +1,4 @@
-import { Home, FileText, Users, Mail, Settings, RefreshCw } from 'lucide-react';
-import { useState } from 'react';
-import { syncAPI } from '../../services/api';
+import { Home, FileText, Users } from 'lucide-react';
 
 interface AppLayoutProps {
   currentView: string;
@@ -9,28 +7,10 @@ interface AppLayoutProps {
 }
 
 export default function AppLayout({ currentView, onNavigate, children }: AppLayoutProps) {
-  const [syncing, setSyncing] = useState(false);
-  const [syncMessage, setSyncMessage] = useState('');
-
-  const handleSync = async () => {
-    setSyncing(true);
-    setSyncMessage('');
-    try {
-      const result = await syncAPI.start();
-      setSyncMessage(result.message || 'Sync completed successfully');
-    } catch (error: any) {
-      setSyncMessage(`Sync failed: ${error.message}`);
-    } finally {
-      setSyncing(false);
-    }
-  };
-
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Home },
     { id: 'invoices', label: 'Invoices', icon: FileText },
     { id: 'customers', label: 'Customers', icon: Users },
-    { id: 'email', label: 'Email', icon: Mail },
-    { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
   return (
@@ -73,26 +53,10 @@ export default function AppLayout({ currentView, onNavigate, children }: AppLayo
         {/* Header */}
         <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white capitalize">
-                {currentView}
-              </h2>
-            </div>
-            <div className="flex items-center gap-4">
-              {syncMessage && (
-                <span className="text-sm text-gray-600 dark:text-gray-400">
-                  {syncMessage}
-                </span>
-              )}
-              <button
-                onClick={handleSync}
-                disabled={syncing}
-                className="btn-primary flex items-center gap-2"
-              >
-                <RefreshCw size={16} className={syncing ? 'animate-spin' : ''} />
-                {syncing ? 'Syncing...' : 'Sync Data'}
-              </button>
-            </div>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white capitalize">
+              {currentView}
+            </h2>
+            <span className="text-sm text-gray-400">Data loaded from JSON</span>
           </div>
         </header>
 

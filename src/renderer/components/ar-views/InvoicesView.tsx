@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { invoicesAPI, stripeAPI } from '../../services/api';
 import type { Invoice, AgeBucket, ARCategory } from '../../types';
 import { format } from 'date-fns';
 import { Copy, ExternalLink, Check } from 'lucide-react';
+
 
 export default function InvoicesView() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterBucket, setFilterBucket] = useState<AgeBucket | 'all'>('all');
   const [filterCategory, setFilterCategory] = useState<ARCategory | 'all'>('all');
+  const [filterCustomer, setFilterCustomer] = useState<string>('all');
+  const [customerSearch, setCustomerSearch] = useState('');
 
   useEffect(() => {
     loadInvoices();
@@ -26,9 +29,29 @@ export default function InvoicesView() {
     }
   };
 
+  // Build sorted, unique customer list for the dropdown
+  const customerOptions = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const inv of invoices) {
+      if (!map.has(inv.customer_id)) {
+        map.set(inv.customer_id, inv.customer_name || 'Unknown');
+      }
+    }
+    return Array.from(map.entries())
+      .map(([id, name]) => ({ id, name }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [invoices]);
+
+  const filteredCustomerOptions = useMemo(() => {
+    if (!customerSearch) return customerOptions;
+    const q = customerSearch.toLowerCase();
+    return customerOptions.filter(c => c.name.toLowerCase().includes(q));
+  }, [customerOptions, customerSearch]);
+
   const filteredInvoices = invoices.filter(inv => {
     if (filterBucket !== 'all' && inv.age_bucket !== filterBucket) return false;
     if (filterCategory !== 'all' && inv.category !== filterCategory) return false;
+    if (filterCustomer !== 'all' && inv.customer_id !== filterCustomer) return false;
     return true;
   });
 
@@ -50,16 +73,18 @@ export default function InvoicesView() {
   const getCategoryBadge = (category: ARCategory | null) => {
     if (!category) return null;
 
-    const styles = {
+    const styles: Record<ARCategory, string> = {
       critical: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
       relevant: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
       all90: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+      standard: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
     };
 
-    const labels = {
+    const labels: Record<ARCategory, string> = {
       critical: 'Critical',
       relevant: 'Relevant',
       all90: '90+ Days',
+      standard: 'Standard',
     };
 
     return (
@@ -77,8 +102,8 @@ export default function InvoicesView() {
       await navigator.clipboard.writeText(url);
       setCopiedId(invoiceId);
       setTimeout(() => setCopiedId(null), 2000);
-    } catch (error) {
-      console.error('Failed to get payment link:', error);
+    } catch {
+      // Toast is already shown by stripeAPI
     }
   };
 
@@ -95,7 +120,7 @@ export default function InvoicesView() {
       {/* Filters */}
       <div className="card">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Filters</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Age Bucket
@@ -126,7 +151,63 @@ export default function InvoicesView() {
               <option value="critical">Critical</option>
               <option value="relevant">Relevant</option>
               <option value="all90">90+ Days</option>
+              <option value="standard">Standard</option>
             </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Customer
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search customers..."
+                value={filterCustomer === 'all' ? customerSearch : customerOptions.find(c => c.id === filterCustomer)?.name || ''}
+                onChange={(e) => {
+                  setCustomerSearch(e.target.value);
+                  if (filterCustomer !== 'all') {
+                    setFilterCustomer('all');
+                  }
+                }}
+                onFocus={() => {
+                  if (filterCustomer !== 'all') {
+                    setCustomerSearch(customerOptions.find(c => c.id === filterCustomer)?.name || '');
+                    setFilterCustomer('all');
+                  }
+                }}
+                className="input w-full"
+              />
+              {customerSearch && filterCustomer === 'all' && (
+                <div className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg max-h-48 overflow-y-auto">
+                  <button
+                    onClick={() => { setFilterCustomer('all'); setCustomerSearch(''); }}
+                    className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    All Customers
+                  </button>
+                  {filteredCustomerOptions.map(c => (
+                    <button
+                      key={c.id}
+                      onClick={() => { setFilterCustomer(c.id); setCustomerSearch(''); }}
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      {c.name}
+                    </button>
+                  ))}
+                  {filteredCustomerOptions.length === 0 && (
+                    <div className="px-3 py-2 text-sm text-gray-400">No matches</div>
+                  )}
+                </div>
+              )}
+              {filterCustomer !== 'all' && (
+                <button
+                  onClick={() => { setFilterCustomer('all'); setCustomerSearch(''); }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-sm"
+                >
+                  &times;
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

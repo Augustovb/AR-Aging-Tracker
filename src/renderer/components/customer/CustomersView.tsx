@@ -274,8 +274,8 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
                             await navigator.clipboard.writeText(url);
                             setCopiedId(inv.id);
                             setTimeout(() => setCopiedId(null), 2000);
-                          } catch (error) {
-                            console.error('Failed to get payment link:', error);
+                          } catch {
+                            // Toast is already shown by stripeAPI
                           }
                         }}
                         className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
@@ -378,11 +378,13 @@ function getCategoryBadge(category: ARCategory | null) {
     critical: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
     relevant: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
     all90: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+    standard: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
   };
   const labels: Record<string, string> = {
     critical: 'Critical',
     relevant: 'Relevant',
     all90: '90+ Days',
+    standard: 'Standard',
   };
   return (
     <span className={`px-2 py-1 text-xs font-medium rounded-full ${styles[category]}`}>
