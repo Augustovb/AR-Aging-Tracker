@@ -85,14 +85,14 @@ export default function CustomersView() {
   };
 
   const SortIcon = ({ column }: { column: CustSortKey }) => {
-    if (sortKey !== column) return <ChevronDown size={14} className="text-gray-300 ml-1 inline" />;
+    if (sortKey !== column) return <ChevronDown size={14} className="text-notion-text-tertiary ml-1 inline" />;
     return sortDir === 'asc'
-      ? <ChevronUp size={14} className="text-primary-600 ml-1 inline" />
-      : <ChevronDown size={14} className="text-primary-600 ml-1 inline" />;
+      ? <ChevronUp size={14} className="text-notion-text ml-1 inline" />
+      : <ChevronDown size={14} className="text-notion-text ml-1 inline" />;
   };
 
   if (loading) {
-    return <div className="card text-center py-12 text-gray-600 dark:text-gray-400">Loading customers...</div>;
+    return <div className="card text-center py-12 text-notion-text-secondary dark:text-gray-400">Loading customers...</div>;
   }
 
   if (selectedCustomerId) {
@@ -104,17 +104,17 @@ export default function CustomersView() {
     );
   }
 
-  const thSortable = "px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer select-none hover:text-gray-700 dark:hover:text-gray-200";
+  const thSortable = "px-4 py-3 text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider cursor-pointer select-none hover:text-notion-text dark:hover:text-gray-200";
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          <h2 className="text-sm font-semibold text-notion-text dark:text-white">
             Customers ({filteredAndSorted.length})
           </h2>
           <div className="relative w-72">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-notion-text-tertiary" />
             <input
               type="text"
               placeholder="Search by name or email..."
@@ -126,13 +126,13 @@ export default function CustomersView() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-800">
+          <table className="min-w-full divide-y divide-notion-border dark:divide-gray-700">
+            <thead className="bg-notion-bg-secondary dark:bg-gray-800">
               <tr>
                 <th className={`${thSortable} text-left`} onClick={() => toggleSort('name')}>
                   Customer <SortIcon column="name" />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Email</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Email</th>
                 <th className={`${thSortable} text-right`} onClick={() => toggleSort('arr')}>
                   ARR <SortIcon column="arr" />
                 </th>
@@ -145,30 +145,30 @@ export default function CustomersView() {
                 <th className={`${thSortable} text-center`} onClick={() => toggleSort('max_days_overdue')}>
                   Max Overdue <SortIcon column="max_days_overdue" />
                 </th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"></th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Status</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider"></th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-notion-border dark:divide-gray-700">
               {filteredAndSorted.map((customer) => (
                 <tr
                   key={customer.id}
                   onClick={() => setSelectedCustomerId(customer.id)}
-                  className="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+                  className="hover:bg-notion-bg-hover dark:hover:bg-gray-800 cursor-pointer"
                 >
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-notion-text dark:text-white">
                     {customer.name}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-notion-text-secondary dark:text-gray-400">
                     {customer.email || '—'}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-gray-600 dark:text-gray-400">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-notion-text-secondary dark:text-gray-400">
                     {customer.arr ? formatCurrency(customer.arr) : '—'}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-right font-semibold text-gray-900 dark:text-white">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-right font-semibold text-notion-text dark:text-white">
                     {formatCurrency(customer.total_ar)}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-center text-gray-600 dark:text-gray-400">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-center text-notion-text-secondary dark:text-gray-400">
                     {customer.invoice_count}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm text-center">
@@ -180,7 +180,7 @@ export default function CustomersView() {
                     {getCategoryBadge(customer.worst_category)}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm text-center">
-                    <ChevronRight size={16} className="text-gray-400" />
+                    <ChevronRight size={16} className="text-notion-text-tertiary" />
                   </td>
                 </tr>
               ))}
@@ -188,7 +188,7 @@ export default function CustomersView() {
           </table>
 
           {filteredAndSorted.length === 0 && (
-            <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+            <div className="text-center py-8 text-notion-text-secondary dark:text-gray-400">
               No customers found.
             </div>
           )}
@@ -260,11 +260,11 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
   };
 
   if (loading) {
-    return <div className="card text-center py-12 text-gray-600 dark:text-gray-400">Loading...</div>;
+    return <div className="card text-center py-12 text-notion-text-secondary dark:text-gray-400">Loading...</div>;
   }
 
   if (!customer) {
-    return <div className="card text-center py-12 text-gray-500">Customer not found.</div>;
+    return <div className="card text-center py-12 text-notion-text-secondary">Customer not found.</div>;
   }
 
   const totalAR = invoices.reduce((sum, inv) => sum + inv.amount, 0);
@@ -272,19 +272,19 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
   const criticalInvoices = invoices.filter(inv => inv.category === 'critical');
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Back button + header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+            className="p-1.5 hover:bg-notion-bg-hover dark:hover:bg-gray-700 rounded-sm"
           >
-            <ArrowLeft size={20} className="text-gray-600 dark:text-gray-400" />
+            <ArrowLeft size={18} className="text-notion-text-secondary dark:text-gray-400" />
           </button>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{customer.name}</h2>
-            <p className="text-gray-500 dark:text-gray-400">{customer.email || 'No email'}</p>
+            <h2 className="text-lg font-semibold text-notion-text dark:text-white">{customer.name}</h2>
+            <p className="text-xs text-notion-text-secondary dark:text-gray-400">{customer.email || 'No email'}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -292,17 +292,17 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
             <button
               onClick={downloadStripeStatement}
               disabled={statementLoading}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
+              className="btn-primary flex items-center gap-2 text-xs py-1.5 px-3"
             >
-              <FileSpreadsheet size={16} />
+              <FileSpreadsheet size={14} />
               {statementLoading ? 'Downloading...' : 'Stripe Statement'}
             </button>
           )}
           <button
             onClick={exportAgingCSV}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+            className="btn-secondary flex items-center gap-2 text-xs py-1.5 px-3"
           >
-            <Download size={16} />
+            <Download size={14} />
             Export Aging CSV
           </button>
         </div>
@@ -311,27 +311,27 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
       {/* Summary cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="card">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total AR</p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{formatCurrency(totalAR)}</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-notion-text-secondary dark:text-gray-400">Total AR</p>
+          <p className="text-xl font-semibold text-notion-text dark:text-white mt-1">{formatCurrency(totalAR)}</p>
         </div>
         <div className="card">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Open Invoices</p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{invoices.length}</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-notion-text-secondary dark:text-gray-400">Open Invoices</p>
+          <p className="text-xl font-semibold text-notion-text dark:text-white mt-1">{invoices.length}</p>
         </div>
         <div className="card">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Overdue</p>
-          <p className="text-2xl font-bold text-red-600 dark:text-red-400 mt-1">{overdueInvoices.length}</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-notion-text-secondary dark:text-gray-400">Overdue</p>
+          <p className="text-xl font-semibold text-red-600 dark:text-red-400 mt-1">{overdueInvoices.length}</p>
         </div>
         <div className="card">
-          <p className="text-sm text-gray-500 dark:text-gray-400">ARR</p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{customer.arr ? formatCurrency(customer.arr) : '—'}</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-notion-text-secondary dark:text-gray-400">ARR</p>
+          <p className="text-xl font-semibold text-notion-text dark:text-white mt-1">{customer.arr ? formatCurrency(customer.arr) : '—'}</p>
         </div>
       </div>
 
       {/* Critical alert */}
       {criticalInvoices.length > 0 && (
-        <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-4">
-          <p className="font-semibold text-red-800 dark:text-red-300">
+        <div className="border border-notion-border-strong dark:border-red-800 rounded-sm px-4 py-3">
+          <p className="text-sm font-medium text-notion-text dark:text-red-300">
             {criticalInvoices.length} critical invoice{criticalInvoices.length > 1 ? 's' : ''} — {formatCurrency(criticalInvoices.reduce((s, i) => s + i.amount, 0))} overdue 30+ days
           </p>
         </div>
@@ -339,7 +339,7 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
 
       {/* Aging Statement */}
       <div className="card">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <h3 className="text-xs font-medium uppercase tracking-wider text-notion-text-secondary dark:text-gray-400 mb-4">
           Aging Statement
         </h3>
         <AgingStatement invoices={invoices} />
@@ -347,28 +347,28 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
 
       {/* Invoice table */}
       <div className="card">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <h3 className="text-xs font-medium uppercase tracking-wider text-notion-text-secondary dark:text-gray-400 mb-4">
           Invoices ({invoices.length})
         </h3>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-800">
+          <table className="min-w-full divide-y divide-notion-border dark:divide-gray-700">
+            <thead className="bg-notion-bg-secondary dark:bg-gray-800">
               <tr>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Due Date</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Days Overdue</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Bucket</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Category</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Actions</th>
+                <th className="px-4 py-3 text-right text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Amount</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Due Date</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Days Overdue</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Bucket</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Category</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-notion-text-secondary dark:text-gray-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-notion-border dark:divide-gray-700">
               {invoices.map((inv) => (
-                <tr key={inv.id} className="hover:bg-gray-50 dark:hover:bg-gray-800" title={`Invoice: ${inv.invoice_number}`}>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-right font-semibold text-gray-900 dark:text-white">
+                <tr key={inv.id} className="hover:bg-notion-bg-hover dark:hover:bg-gray-800" title={`Invoice: ${inv.invoice_number}`}>
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-right font-semibold text-notion-text dark:text-white">
                     {formatCurrency(inv.amount)}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-notion-text-secondary dark:text-gray-400">
                     {formatDate(inv.due_date)}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm text-center">
@@ -376,7 +376,7 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
                       {inv.days_overdue}d
                     </span>
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-center text-gray-600 dark:text-gray-400">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-center text-notion-text-secondary dark:text-gray-400">
                     {inv.age_bucket}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm text-center">
@@ -395,21 +395,21 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
                             // Toast is already shown by stripeAPI
                           }
                         }}
-                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                        className="p-1 hover:bg-notion-bg-hover dark:hover:bg-gray-700 rounded-sm"
                         title="Copy payment link"
                       >
                         {copiedId === inv.id
                           ? <Check size={16} className="text-green-600" />
-                          : <Copy size={16} className="text-gray-600 dark:text-gray-400" />}
+                          : <Copy size={16} className="text-notion-text-secondary dark:text-gray-400" />}
                       </button>
                       <a
                         href={`https://dashboard.stripe.com/invoices/${inv.invoice_number}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                        className="p-1 hover:bg-notion-bg-hover dark:hover:bg-gray-700 rounded-sm"
                         title="View in Stripe"
                       >
-                        <ExternalLink size={16} className="text-gray-600 dark:text-gray-400" />
+                        <ExternalLink size={16} className="text-notion-text-secondary dark:text-gray-400" />
                       </a>
                     </div>
                   </td>
@@ -419,7 +419,7 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
           </table>
 
           {invoices.length === 0 && (
-            <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+            <div className="text-center py-8 text-notion-text-secondary dark:text-gray-400">
               No invoices for this customer.
             </div>
           )}
@@ -452,24 +452,24 @@ function AgingStatement({ invoices }: { invoices: Invoice[] }) {
   const grandTotal = invoices.reduce((sum, inv) => sum + inv.amount, 0);
 
   return (
-    <div className="space-y-1">
+    <div className="bg-notion-bg-secondary dark:bg-gray-800 rounded-sm">
       {breakdown.map(row => (
         <div
           key={row.bucket}
-          className={`flex items-center justify-between py-2 px-3 rounded ${row.total > 0 ? 'bg-gray-50 dark:bg-gray-800' : ''}`}
+          className="flex items-center justify-between py-2.5 px-4 border-b border-notion-border dark:border-gray-700 last:border-b-0"
         >
           <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300 w-24">{row.label}</span>
-            <span className="text-xs text-gray-400">{row.count} invoice{row.count !== 1 ? 's' : ''}</span>
+            <span className="text-sm font-medium text-notion-text dark:text-gray-300 w-24">{row.label}</span>
+            <span className="text-xs text-notion-text-tertiary">{row.count} invoice{row.count !== 1 ? 's' : ''}</span>
           </div>
-          <span className={`text-sm font-semibold ${row.total > 0 ? 'text-gray-900 dark:text-white' : 'text-gray-400'}`}>
+          <span className={`text-sm font-semibold ${row.total > 0 ? 'text-notion-text dark:text-white' : 'text-notion-text-tertiary'}`}>
             {formatCurrency(row.total)}
           </span>
         </div>
       ))}
-      <div className="flex items-center justify-between py-3 px-3 border-t-2 border-gray-300 dark:border-gray-600 mt-2">
-        <span className="text-sm font-bold text-gray-900 dark:text-white">Total Outstanding</span>
-        <span className="text-lg font-bold text-gray-900 dark:text-white">{formatCurrency(grandTotal)}</span>
+      <div className="flex items-center justify-between py-3 px-4 border-t-2 border-notion-text dark:border-gray-400">
+        <span className="text-sm font-bold text-notion-text dark:text-white">Total Outstanding</span>
+        <span className="text-base font-bold text-notion-text dark:text-white">{formatCurrency(grandTotal)}</span>
       </div>
     </div>
   );
@@ -490,12 +490,12 @@ function formatDate(dateString: string) {
 }
 
 function getCategoryBadge(category: ARCategory | null) {
-  if (!category) return <span className="text-gray-400 text-xs">—</span>;
+  if (!category) return <span className="text-notion-text-tertiary text-xs">—</span>;
   const styles: Record<string, string> = {
-    critical: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-    relevant: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-    all90: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-    standard: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+    critical: 'bg-red-50 text-red-700 dark:bg-red-900 dark:text-red-200',
+    relevant: 'bg-orange-50 text-orange-700 dark:bg-orange-900 dark:text-orange-200',
+    all90: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200',
+    standard: 'bg-notion-bg-secondary text-notion-text-secondary dark:bg-gray-700 dark:text-gray-300',
   };
   const labels: Record<string, string> = {
     critical: 'Critical',
@@ -504,7 +504,7 @@ function getCategoryBadge(category: ARCategory | null) {
     standard: 'Standard',
   };
   return (
-    <span className={`px-2 py-1 text-xs font-medium rounded-full ${styles[category]}`}>
+    <span className={`px-2 py-0.5 text-xs font-medium rounded-sm ${styles[category]}`}>
       {labels[category]}
     </span>
   );

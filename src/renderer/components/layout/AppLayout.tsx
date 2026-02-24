@@ -14,19 +14,19 @@ export default function AppLayout({ currentView, onNavigate, children }: AppLayo
   ];
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex h-screen bg-white dark:bg-gray-900">
       {/* Sidebar */}
-      <aside className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+      <aside className="w-60 bg-notion-bg-secondary dark:bg-gray-800 border-r border-notion-border dark:border-gray-700">
+        <div className="px-4 py-5">
+          <h1 className="text-base font-semibold text-notion-text dark:text-white">
             AR Tracker
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-xs text-notion-text-secondary dark:text-gray-400 mt-0.5">
             Invoice Management
           </p>
         </div>
 
-        <nav className="px-3 space-y-1">
+        <nav className="px-2 space-y-0.5">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentView === item.id;
@@ -34,14 +34,14 @@ export default function AppLayout({ currentView, onNavigate, children }: AppLayo
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+                className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-sm transition-colors text-sm ${
                   isActive
-                    ? 'bg-primary-50 text-primary-700 dark:bg-primary-900 dark:text-primary-300'
-                    : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'
+                    ? 'bg-notion-bg-hover font-semibold text-notion-text dark:bg-gray-700 dark:text-white'
+                    : 'text-notion-text-secondary hover:bg-notion-bg-hover dark:text-gray-400 dark:hover:bg-gray-700'
                 }`}
               >
-                <Icon size={20} />
-                <span className="font-medium">{item.label}</span>
+                <Icon size={18} />
+                <span>{item.label}</span>
               </button>
             );
           })}
@@ -51,12 +51,12 @@ export default function AppLayout({ currentView, onNavigate, children }: AppLayo
       {/* Main content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+        <header className="bg-white dark:bg-gray-800 border-b border-notion-border dark:border-gray-700 px-6 py-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white capitalize">
+            <h2 className="text-sm font-semibold text-notion-text dark:text-white capitalize">
               {currentView}
             </h2>
-            <span className="text-sm text-gray-400">Data loaded from JSON</span>
+            <span className="text-xs text-notion-text-tertiary">Data loaded from JSON</span>
           </div>
         </header>
 
