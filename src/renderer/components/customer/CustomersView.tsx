@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { customersAPI, invoicesAPI, stripeAPI } from '../../services/api';
 import type { Invoice, ARCategory } from '../../types';
 import { format } from 'date-fns';
-import { Search, ArrowLeft, Copy, ExternalLink, ChevronRight, Check } from 'lucide-react';
+import { Search, ArrowLeft, Copy, ExternalLink, ChevronRight, Check, ChevronUp, ChevronDown, Download } from 'lucide-react';
 
 interface CustomerWithAR {
   id: string;
@@ -16,11 +16,16 @@ interface CustomerWithAR {
   worst_category: ARCategory | null;
 }
 
+type CustSortKey = 'name' | 'total_ar' | 'invoice_count' | 'max_days_overdue' | 'arr';
+type SortDir = 'asc' | 'desc';
+
 export default function CustomersView() {
   const [customers, setCustomers] = useState<CustomerWithAR[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<CustSortKey>('total_ar');
+  const [sortDir, setSortDir] = useState<SortDir>('desc');
 
   useEffect(() => {
     loadCustomers();
@@ -37,11 +42,53 @@ export default function CustomersView() {
     }
   };
 
-  const filtered = customers.filter(c => {
-    if (!search) return true;
-    const q = search.toLowerCase();
-    return c.name.toLowerCase().includes(q) || (c.email && c.email.toLowerCase().includes(q));
-  });
+  const filteredAndSorted = useMemo(() => {
+    let result = customers.filter(c => {
+      if (!search) return true;
+      const q = search.toLowerCase();
+      return c.name.toLowerCase().includes(q) || (c.email && c.email.toLowerCase().includes(q));
+    });
+
+    result = [...result].sort((a, b) => {
+      let cmp = 0;
+      switch (sortKey) {
+        case 'name':
+          cmp = a.name.localeCompare(b.name);
+          break;
+        case 'total_ar':
+          cmp = a.total_ar - b.total_ar;
+          break;
+        case 'invoice_count':
+          cmp = a.invoice_count - b.invoice_count;
+          break;
+        case 'max_days_overdue':
+          cmp = a.max_days_overdue - b.max_days_overdue;
+          break;
+        case 'arr':
+          cmp = (a.arr || 0) - (b.arr || 0);
+          break;
+      }
+      return sortDir === 'asc' ? cmp : -cmp;
+    });
+
+    return result;
+  }, [customers, search, sortKey, sortDir]);
+
+  const toggleSort = (key: CustSortKey) => {
+    if (sortKey === key) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortKey(key);
+      setSortDir('desc');
+    }
+  };
+
+  const SortIcon = ({ column }: { column: CustSortKey }) => {
+    if (sortKey !== column) return <ChevronDown size={14} className="text-gray-300 ml-1 inline" />;
+    return sortDir === 'asc'
+      ? <ChevronUp size={14} className="text-primary-600 ml-1 inline" />
+      : <ChevronDown size={14} className="text-primary-600 ml-1 inline" />;
+  };
 
   if (loading) {
     return <div className="card text-center py-12 text-gray-600 dark:text-gray-400">Loading customers...</div>;
@@ -56,12 +103,14 @@ export default function CustomersView() {
     );
   }
 
+  const thSortable = "px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer select-none hover:text-gray-700 dark:hover:text-gray-200";
+
   return (
     <div className="space-y-6">
       <div className="card">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Customers ({filtered.length})
+            Customers ({filteredAndSorted.length})
           </h2>
           <div className="relative w-72">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -79,18 +128,28 @@ export default function CustomersView() {
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-800">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Customer</th>
+                <th className={`${thSortable} text-left`} onClick={() => toggleSort('name')}>
+                  Customer <SortIcon column="name" />
+                </th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Email</th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ARR</th>
-                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total AR</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Invoices</th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Max Overdue</th>
+                <th className={`${thSortable} text-right`} onClick={() => toggleSort('arr')}>
+                  ARR <SortIcon column="arr" />
+                </th>
+                <th className={`${thSortable} text-right`} onClick={() => toggleSort('total_ar')}>
+                  Total AR <SortIcon column="total_ar" />
+                </th>
+                <th className={`${thSortable} text-center`} onClick={() => toggleSort('invoice_count')}>
+                  Invoices <SortIcon column="invoice_count" />
+                </th>
+                <th className={`${thSortable} text-center`} onClick={() => toggleSort('max_days_overdue')}>
+                  Max Overdue <SortIcon column="max_days_overdue" />
+                </th>
                 <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
                 <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"></th>
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
-              {filtered.map((customer) => (
+              {filteredAndSorted.map((customer) => (
                 <tr
                   key={customer.id}
                   onClick={() => setSelectedCustomerId(customer.id)}
@@ -127,7 +186,7 @@ export default function CustomersView() {
             </tbody>
           </table>
 
-          {filtered.length === 0 && (
+          {filteredAndSorted.length === 0 && (
             <div className="text-center py-8 text-gray-500 dark:text-gray-400">
               No customers found.
             </div>
@@ -163,6 +222,28 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
     }
   };
 
+  const exportAgingCSV = () => {
+    if (!customer) return;
+    const header = ['Invoice #', 'Amount', 'Currency', 'Due Date', 'Days Overdue', 'Age Bucket', 'Category'];
+    const rows = invoices.map(inv => [
+      inv.invoice_number,
+      inv.amount.toFixed(2),
+      inv.currency.toUpperCase(),
+      inv.due_date.split('T')[0],
+      String(inv.days_overdue),
+      inv.age_bucket,
+      inv.category || '',
+    ]);
+    const csv = [header, ...rows].map(r => r.map(c => `"${c}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${customer.name.replace(/[^a-zA-Z0-9]/g, '_')}-aging-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   if (loading) {
     return <div className="card text-center py-12 text-gray-600 dark:text-gray-400">Loading...</div>;
   }
@@ -178,17 +259,26 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
   return (
     <div className="space-y-6">
       {/* Back button + header */}
-      <div className="flex items-center gap-4">
-        <button
-          onClick={onBack}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-        >
-          <ArrowLeft size={20} className="text-gray-600 dark:text-gray-400" />
-        </button>
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{customer.name}</h2>
-          <p className="text-gray-500 dark:text-gray-400">{customer.email || 'No email'}</p>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={onBack}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+          >
+            <ArrowLeft size={20} className="text-gray-600 dark:text-gray-400" />
+          </button>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{customer.name}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{customer.email || 'No email'}</p>
+          </div>
         </div>
+        <button
+          onClick={exportAgingCSV}
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+        >
+          <Download size={16} />
+          Export Aging CSV
+        </button>
       </div>
 
       {/* Summary cards */}
@@ -316,9 +406,9 @@ function AgingStatement({ invoices }: { invoices: Invoice[] }) {
   const buckets = ['current', '1-30', '31-60', '61-90', '90+'] as const;
   const bucketLabels: Record<string, string> = {
     current: 'Current',
-    '1-30': '1–30 days',
-    '31-60': '31–60 days',
-    '61-90': '61–90 days',
+    '1-30': '1-30 days',
+    '31-60': '31-60 days',
+    '61-90': '61-90 days',
     '90+': '90+ days',
   };
 
@@ -392,4 +482,3 @@ function getCategoryBadge(category: ARCategory | null) {
     </span>
   );
 }
-

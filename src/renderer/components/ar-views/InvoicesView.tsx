@@ -2,8 +2,12 @@ import { useEffect, useState, useMemo } from 'react';
 import { invoicesAPI, stripeAPI } from '../../services/api';
 import type { Invoice, AgeBucket, ARCategory } from '../../types';
 import { format } from 'date-fns';
-import { Copy, ExternalLink, Check } from 'lucide-react';
+import { Copy, ExternalLink, Check, ChevronUp, ChevronDown, Download } from 'lucide-react';
 
+type SortKey = 'customer_name' | 'amount' | 'due_date' | 'days_overdue' | 'category';
+type SortDir = 'asc' | 'desc';
+
+const CATEGORY_ORDER: Record<string, number> = { critical: 4, relevant: 3, all90: 2, standard: 1 };
 
 export default function InvoicesView() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -12,6 +16,8 @@ export default function InvoicesView() {
   const [filterCategory, setFilterCategory] = useState<ARCategory | 'all'>('all');
   const [filterCustomer, setFilterCustomer] = useState<string>('all');
   const [customerSearch, setCustomerSearch] = useState('');
+  const [sortKey, setSortKey] = useState<SortKey>('days_overdue');
+  const [sortDir, setSortDir] = useState<SortDir>('desc');
 
   useEffect(() => {
     loadInvoices();
@@ -29,7 +35,6 @@ export default function InvoicesView() {
     }
   };
 
-  // Build sorted, unique customer list for the dropdown
   const customerOptions = useMemo(() => {
     const map = new Map<string, string>();
     for (const inv of invoices) {
@@ -48,19 +53,79 @@ export default function InvoicesView() {
     return customerOptions.filter(c => c.name.toLowerCase().includes(q));
   }, [customerOptions, customerSearch]);
 
-  const filteredInvoices = invoices.filter(inv => {
-    if (filterBucket !== 'all' && inv.age_bucket !== filterBucket) return false;
-    if (filterCategory !== 'all' && inv.category !== filterCategory) return false;
-    if (filterCustomer !== 'all' && inv.customer_id !== filterCustomer) return false;
-    return true;
-  });
+  const filteredAndSorted = useMemo(() => {
+    let result = invoices.filter(inv => {
+      if (filterBucket !== 'all' && inv.age_bucket !== filterBucket) return false;
+      if (filterCategory !== 'all' && inv.category !== filterCategory) return false;
+      if (filterCustomer !== 'all' && inv.customer_id !== filterCustomer) return false;
+      return true;
+    });
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(amount);
+    result.sort((a, b) => {
+      let cmp = 0;
+      switch (sortKey) {
+        case 'customer_name':
+          cmp = (a.customer_name || '').localeCompare(b.customer_name || '');
+          break;
+        case 'amount':
+          cmp = a.amount - b.amount;
+          break;
+        case 'due_date':
+          cmp = new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
+          break;
+        case 'days_overdue':
+          cmp = a.days_overdue - b.days_overdue;
+          break;
+        case 'category':
+          cmp = (CATEGORY_ORDER[a.category || ''] || 0) - (CATEGORY_ORDER[b.category || ''] || 0);
+          break;
+      }
+      return sortDir === 'asc' ? cmp : -cmp;
+    });
+
+    return result;
+  }, [invoices, filterBucket, filterCategory, filterCustomer, sortKey, sortDir]);
+
+  const toggleSort = (key: SortKey) => {
+    if (sortKey === key) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortKey(key);
+      setSortDir('desc');
+    }
   };
+
+  const SortIcon = ({ column }: { column: SortKey }) => {
+    if (sortKey !== column) return <ChevronDown size={14} className="text-gray-300 ml-1 inline" />;
+    return sortDir === 'asc'
+      ? <ChevronUp size={14} className="text-primary-600 ml-1 inline" />
+      : <ChevronDown size={14} className="text-primary-600 ml-1 inline" />;
+  };
+
+  const exportCSV = () => {
+    const header = ['Customer', 'Invoice #', 'Amount', 'Currency', 'Due Date', 'Days Overdue', 'Age Bucket', 'Category'];
+    const rows = filteredAndSorted.map(inv => [
+      inv.customer_name || 'Unknown',
+      inv.invoice_number,
+      inv.amount.toFixed(2),
+      inv.currency.toUpperCase(),
+      inv.due_date.split('T')[0],
+      String(inv.days_overdue),
+      inv.age_bucket,
+      inv.category || '',
+    ]);
+    const csv = [header, ...rows].map(r => r.map(c => `"${c}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `invoices-export-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const formatCurrency = (amount: number) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
 
   const formatDate = (dateString: string) => {
     try {
@@ -72,21 +137,18 @@ export default function InvoicesView() {
 
   const getCategoryBadge = (category: ARCategory | null) => {
     if (!category) return null;
-
     const styles: Record<ARCategory, string> = {
       critical: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
       relevant: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
       all90: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
       standard: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
     };
-
     const labels: Record<ARCategory, string> = {
       critical: 'Critical',
       relevant: 'Relevant',
       all90: '90+ Days',
       standard: 'Standard',
     };
-
     return (
       <span className={`px-2 py-1 text-xs font-medium rounded-full ${styles[category]}`}>
         {labels[category]}
@@ -114,6 +176,8 @@ export default function InvoicesView() {
       </div>
     );
   }
+
+  const thClass = "px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer select-none hover:text-gray-700 dark:hover:text-gray-200";
 
   return (
     <div className="space-y-6">
@@ -165,9 +229,7 @@ export default function InvoicesView() {
                 value={filterCustomer === 'all' ? customerSearch : customerOptions.find(c => c.id === filterCustomer)?.name || ''}
                 onChange={(e) => {
                   setCustomerSearch(e.target.value);
-                  if (filterCustomer !== 'all') {
-                    setFilterCustomer('all');
-                  }
+                  if (filterCustomer !== 'all') setFilterCustomer('all');
                 }}
                 onFocus={() => {
                   if (filterCustomer !== 'all') {
@@ -216,28 +278,35 @@ export default function InvoicesView() {
       <div className="card">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Invoices ({filteredInvoices.length})
+            Invoices ({filteredAndSorted.length})
           </h2>
+          <button
+            onClick={exportCSV}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+          >
+            <Download size={16} />
+            Export CSV
+          </button>
         </div>
 
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-800">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Customer
+                <th className={thClass} onClick={() => toggleSort('customer_name')}>
+                  Customer <SortIcon column="customer_name" />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Amount
+                <th className={thClass} onClick={() => toggleSort('amount')}>
+                  Amount <SortIcon column="amount" />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Due Date
+                <th className={thClass} onClick={() => toggleSort('due_date')}>
+                  Due Date <SortIcon column="due_date" />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Days Overdue
+                <th className={thClass} onClick={() => toggleSort('days_overdue')}>
+                  Days Overdue <SortIcon column="days_overdue" />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Category
+                <th className={thClass} onClick={() => toggleSort('category')}>
+                  Category <SortIcon column="category" />
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Actions
@@ -245,7 +314,7 @@ export default function InvoicesView() {
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
-              {filteredInvoices.map((invoice) => (
+              {filteredAndSorted.map((invoice) => (
                 <tr key={invoice.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                   <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white" title={`Invoice: ${invoice.invoice_number}`}>
                     {invoice.customer_name || 'Unknown'}
@@ -291,7 +360,7 @@ export default function InvoicesView() {
             </tbody>
           </table>
 
-          {filteredInvoices.length === 0 && (
+          {filteredAndSorted.length === 0 && (
             <div className="text-center py-8 text-gray-500 dark:text-gray-400">
               No invoices found matching the current filters.
             </div>
