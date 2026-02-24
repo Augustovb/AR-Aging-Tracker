@@ -171,8 +171,18 @@ export const stripeAPI = {
     return Promise.reject(new Error('Stripe not connected'));
   },
 
-  getCustomerStatement(_customerId: string): Promise<any> {
-    toast('Stripe not connected yet', { icon: '🔗' });
-    return Promise.reject(new Error('Stripe not connected'));
+  async getCustomerStatement(stripeCustomerId: string): Promise<void> {
+    const response = await fetch(`/api/stripe/statement/${stripeCustomerId}`);
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({ error: 'Download failed' }));
+      throw new Error(err.error || `HTTP ${response.status}`);
+    }
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `stripe-statement-${stripeCustomerId}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
   },
 };

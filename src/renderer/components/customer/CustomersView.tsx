@@ -2,7 +2,8 @@ import { useEffect, useState, useMemo } from 'react';
 import { customersAPI, invoicesAPI, stripeAPI } from '../../services/api';
 import type { Invoice, ARCategory } from '../../types';
 import { format } from 'date-fns';
-import { Search, ArrowLeft, Copy, ExternalLink, ChevronRight, Check, ChevronUp, ChevronDown, Download } from 'lucide-react';
+import toast from 'react-hot-toast';
+import { Search, ArrowLeft, Copy, ExternalLink, ChevronRight, Check, ChevronUp, ChevronDown, Download, FileSpreadsheet } from 'lucide-react';
 
 interface CustomerWithAR {
   id: string;
@@ -202,6 +203,7 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [statementLoading, setStatementLoading] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -244,6 +246,19 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
     URL.revokeObjectURL(url);
   };
 
+  const downloadStripeStatement = async () => {
+    if (!customer?.stripe_customer_id) return;
+    setStatementLoading(true);
+    try {
+      await stripeAPI.getCustomerStatement(customer.stripe_customer_id);
+      toast.success('Statement downloaded');
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to download statement');
+    } finally {
+      setStatementLoading(false);
+    }
+  };
+
   if (loading) {
     return <div className="card text-center py-12 text-gray-600 dark:text-gray-400">Loading...</div>;
   }
@@ -272,13 +287,25 @@ function CustomerDetail({ customerId, onBack }: { customerId: string; onBack: ()
             <p className="text-gray-500 dark:text-gray-400">{customer.email || 'No email'}</p>
           </div>
         </div>
-        <button
-          onClick={exportAgingCSV}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
-        >
-          <Download size={16} />
-          Export Aging CSV
-        </button>
+        <div className="flex items-center gap-2">
+          {customer.stripe_customer_id && (
+            <button
+              onClick={downloadStripeStatement}
+              disabled={statementLoading}
+              className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
+            >
+              <FileSpreadsheet size={16} />
+              {statementLoading ? 'Downloading...' : 'Stripe Statement'}
+            </button>
+          )}
+          <button
+            onClick={exportAgingCSV}
+            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+          >
+            <Download size={16} />
+            Export Aging CSV
+          </button>
+        </div>
       </div>
 
       {/* Summary cards */}
